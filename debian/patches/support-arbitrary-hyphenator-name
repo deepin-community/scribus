@@ -1,0 +1,97 @@
+Description: support arbitrary separately packaged hyphenators
+ * scribus/hysettings.cpp
+   The names of languages that scribus knows about are in a hard-coded table.
+   So to support arbitrary languages which scribus doesn't know about we take
+   the locale string as a fallback in the UI
+ * scribus/langmgr.cpp
+   This bit is admittedly a bit messy given the existing table of language
+   abbreviations that are in use. But the patch should be good enough for the
+   majority of situations as a starting point.
+ * scribus/scribus.cpp
+   follow symlinks when looking for files
+Author: Dan Horák <dan@danny.cz>
+Forwarded: yes, rejected (see the bug)
+Reviewd-By: Mattia Rizzolo <mattia@mapreri.org>
+Bug: http://bugs.scribus.net/view.php?id=8157
+Bug-Debian: https://bugs.debian.org/533081
+Bug-Debian: https://bugs.debian.org/762942
+Bug-Debian: https://bugs.debian.org/771471
+Last-Update: 2015-09-27
+
+
+--- a/scribus/hysettings.cpp
++++ b/scribus/hysettings.cpp
+@@ -33,7 +33,17 @@
+ 	language->setInsertPolicy(QComboBox::InsertAlphabetically);
+ 	foreach(QString hlang, lmg->hyphLangs())
+ 	{
+-		language->addItem( lmg->getLangFromAbbrev(hlang), lmg->getLangFromAbbrev(hlang,false) );
++		QString uiname = lmg->getLangFromAbbrev(hlang);
++		QString lang = lmg->getLangFromAbbrev(hlang,false);
++
++		//Fallback to use lang code as name if otherwise unknown
++		if (uiname.isEmpty())
++			uiname = hlang;
++
++		if (lang.isEmpty())
++			lang = hlang;
++
++		language->addItem( uiname, lang );
+ 	}
+ 	updateDictList();
+ 	setAvailDictsXMLFile(downloadLocation + "scribus_spell_dicts.xml");
+--- a/scribus/langmgr.cpp
++++ b/scribus/langmgr.cpp
+@@ -444,7 +444,31 @@
+ {
+ 	if(langIsAbbreviated)
+ 		return hyphLangList.value(lang);
+-	return hyphLangList.value(getAbbrevFromLang(lang, false, false));
++
++	QString abbrev = getAbbrevFromLang(lang, false);
++
++	// If we don't have the language in our hard-coded table,
++	// then try it directly
++	if (abbrev.isEmpty())
++		abbrev = lang;
++	QString ret = hyphLangList.value(abbrev);
++	if (ret.isEmpty())
++	{
++		// As a hack, if the language was munged into an abbreviated
++		// generic version through our table, i.e. German to "de"
++		// then hope for the best and pick the first of i.e.
++		// "de_AT", "de_DE" if it exists
++		foreach(QString hlang, hyphLangs())
++		{
++			QStringList items = hlang.split("_");
++			if (!items.empty() && items[0] == abbrev)
++			{
++				ret = hyphLangList.value(hlang);
++				break;
++			}
++		}
++	}
++	return ret;
+ }
+ 
+ const QStringList LanguageManager::hyphLangs()
+--- a/scribus/scribus.cpp
++++ b/scribus/scribus.cpp
+@@ -7952,7 +7952,7 @@
+ 		delete dia;
+ 		QFile::remove(prefsManager->preferencesLocation()+"/tmp.ps");
+ 		QFile::remove(prefsManager->preferencesLocation()+"/sc.png");
+-		QDir d(prefsManager->preferencesLocation()+"/", "sc.*", QDir::Name, QDir::Files | QDir::NoSymLinks);
++		QDir d(prefsManager->preferencesLocation()+"/", "sc.*", QDir::Name, QDir::Files);
+ 		if ((d.exists()) && (d.count() != 0))
+ 		{
+ 			for (uint dc = 0; dc < d.count(); dc++)
+@@ -9100,7 +9100,7 @@
+ 	//Grab the language abbreviation from it, get the full language text
+ 	//Insert the name as key and a new string list into the map
+ 	QString hyphDirName = QDir::toNativeSeparators(ScPaths::instance().dictDir());
+-	QDir hyphDir(hyphDirName, "*.dic", QDir::Name, QDir::Files | QDir::NoSymLinks);
++	QDir hyphDir(hyphDirName, "*.dic", QDir::Name, QDir::Files);
+ 	if ((hyphDir.exists()) && (hyphDir.count() != 0))
+ 	{
+ // 		LanguageManager langmgr;
