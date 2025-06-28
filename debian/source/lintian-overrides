@@ -1,0 +1,7 @@
+very-long-line-length-in-source-file
+
+# FPOS
+source-is-missing [devel-doc/templates/index.html]
+
+# not relevant to users
+package-does-not-install-examples [scribus/plugins/scripter/python/examples/]

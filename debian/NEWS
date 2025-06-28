@@ -1,0 +1,36 @@
+scribus (1.5.5+dfsg-4) experimental; urgency=low
+
+  This is the first upload of the 1.5.x branch under the "scribus" name.
+  Please take note that files saved with this versions cannot be opened by
+  older versions from the 1.4.x branch.
+  Take care of doing backups of all your documents before moving on.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 15 Jan 2020 21:05:31 +0100
+
+scribus-ng (1.5.1+dfsg-1) experimental; urgency=low
+
+  This is the first package of the 1.5.x series. Bear in mind that once you have
+  opened (and saved) a file with this version of scribus there is no way back to
+  open it with a previous release. So, back up your files!
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 11 Mar 2016 16:28:00 +0000
+
+scribus-ng (1.4.0.dfsg+r17300-1) unstable; urgency=low
+
+  This is a dummy transitional package to converge both scribus and
+  scribus-ng on the 1.4.0 release. Please install the "scribus" package and
+  remove scribus-ng. At some point scribus-ng will be switched to 1.5.0svn.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 15 Feb 2012 15:57:12 -0600
+
+scribus (1.3.9.dfsg+svn20110210-1) unstable; urgency=low
+
+  This is a Qt4 developmental branch converging to a stable 1.4.0 release.
+  File format in 1.3.x is incompatible with the earlier releases based on
+  Qt3 (1.3.3.x packages). There is no going back! Stay with Debian Stable if
+  you need to use a 1.3.3.x package. Use this package when you are ready to
+  transition to the 1.3.x series. However, be aware that after this upload
+  there will no longer be a 1.3.3.x package in Debian, so it's a good time to
+  start planning your transition.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 11 Feb 2011 13:21:59 -0600

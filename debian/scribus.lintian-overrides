@@ -1,0 +1,2 @@
+# plugins need to be +x
+executable-in-usr-lib [usr/lib/scribus/plugins/*

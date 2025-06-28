@@ -1,0 +1,15 @@
+Description: name the program 'Scribus NG' in the .desktop
+Author: Mattia Rizzolo <mattia@debian.org>
+Last-Update: 2016-08-07
+Forwarded: not-needed
+
+--- a/scribus.desktop.in
++++ b/scribus.desktop.in
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Name=Scribus
++Name=Scribus NG
+ Name[ar]=سكريبس
+ Name[fa]=اسکریباس
+ Name[lo]=ສະຄຣີບັດສ໌

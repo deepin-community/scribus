@@ -1,5 +1,2935 @@
-template-repository (1.0-1) unstable; urgency=medium
+scribus (1.6.3+dfsg-0.2) unstable; urgency=medium
 
-  * Initial release
+  * Non-maintainer upload
+  * Cherry-pick patch to fix build with poppler 25.02
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 04 Mar 2025 17:30:59 -0500
+
+scribus (1.6.3+dfsg-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  * New upstream release (Closes: #1093219)
+  * Remove unused Build-Depends: libqt5webkit5-dev (Closes: #1093807)
+  * Bump minimum poppler to 0.75.0
+  * Update debian/watch to only watch for stable releases and ignore 1.7.*
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Sun, 26 Jan 2025 14:06:47 -0500
+
+scribus (1.6.2+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 1.6.2+dfsg.  Closes: #1064536
+    https://www.scribus.net/scribus-1-6-0-released/
+    https://www.scribus.net/scribus-1-6-1-released/
+    https://www.scribus.net/scribus-1-6-2-released/
+    + Fix FTBFS with poppler 24.06.  Closes: #1074020
+    + Fix FTBFS with Python 3.12.  Closes: #1074220
+  * Remove patches applied upstream.
+  * Use declerative dh sequence addons.
+  * Require harfbuzz >= 8.
+  * Update d/copyright.
+  * Update lintian overrides.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 26 Jul 2024 21:17:52 +0900
+
+scribus (1.5.8+dfsg-5) unstable; urgency=medium
+
+  * Add patch from upstream to fix build with Python 3.12.  Closes: #1061305
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 20 Feb 2024 16:32:45 +0100
+
+scribus (1.5.8+dfsg-4) unstable; urgency=medium
+
+  * Add patch from upstream to fix build with poppler >= 22.9.
+    Closes: #1026032; LP: #1999524
+  * Bump Standards-Version to 4.6.2, no changes needed
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 19 Dec 2022 00:52:47 +0100
+
+scribus (1.5.8+dfsg-3) unstable; urgency=medium
+
+  * Replace the poppler22 patch from the one specific for branch 15x, also
+    fixing the mangled newlines.
+  * Add patches from upstream to fix build with poppler 22.04 and 22.06.
+    Closes: #1012850
+  * Bump Standards-Version to 4.6.1, no changes needed.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 18 Jun 2022 16:08:24 +0200
+
+scribus (1.5.8+dfsg-2) unstable; urgency=medium
+
+  [ Jeremy Bicha ]
+  * Cherry-pick patch from upstream to fix build with poppler 22.
+  * debian/rules: Set -DWANT_CPP17=ON as required by poppler 22.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 19 Feb 2022 15:22:48 +0100
+
+scribus (1.5.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 1.5.8+dfsg.
+    https://www.scribus.net/scribus-1-5-8-released/
+    https://w.scribus.net/wiki/index.php/1.5.8_Release
+  * Update copyright.
+  * Drop patches applied upstream.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 26 Jan 2022 18:06:18 +0100
+
+scribus (1.5.7+dfsg-5) unstable; urgency=medium
+
+  * Revert "d/rules: disable LTO, as it causes segfaults on startup"
+    Going to apply a patch from upstream instead.
+    This reverts commit cb3f802e0c70a0fbb8001603304c4cd7d8bea9e3.
+  * Add patch from upstream to prevent a possible segfault when built with LTO.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 21 Sep 2021 13:40:11 +0200
+
+scribus (1.5.7+dfsg-4) unstable; urgency=medium
+
+  * Update the harfbuzz-subset patch with another fix.
+  * Set upstream metadata fields: Bug-Database and Bug-Submit.
+  * Remove now unneeded dh-exec-subst-unknown-variable lintian override.
+  * Override the unusual-interpreter lintian warnings.
+  * d/rules: Disable LTO, as it causes segfaults on startup.  LP: #1939213
+    Thanks to mitya57 for the debugging and RikMills for finding a solution.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 19 Sep 2021 16:08:45 +0200
+
+scribus (1.5.7+dfsg-3) unstable; urgency=medium
+
+  * Really upload to unstable.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 27 Aug 2021 15:09:42 +0200
+
+scribus (1.5.7+dfsg-2) experimental; urgency=medium
+
+  * Upload to unstable.
+  * Add patch from upstream to support the new harfbuzz-subset API that is
+    coming with the upcoming harfbuzz 3.0.  See: #988781
+  * d/control:
+    + Bump Standards-Version to 4.6.0, no changes needed.
+    + Bump debhelper compat version to 13.
+      - d/rules: Drop explicit dh_missing --fail-missing, default in compat 13.
+      - Drop dh-exec usage, now variable subst by debhelper is enough.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 27 Aug 2021 10:43:28 +0200
+
+scribus (1.5.7+dfsg-1) experimental; urgency=medium
+
+  * New upstream version 1.5.7+dfsg.
+  * Refresh patches.
+  * d/control:
+    + Update Build-Depends' version restrictions.
+    + Bump Standards-Version to 4.5.1, no changes needed.
+  * d/copyright:
+    + Update.
+    + Exclude all of xcode/, to reduce noise.  Will be effective from the next
+      upstream release.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 19 May 2021 16:36:02 +0200
+
+scribus (1.5.6.1+dfsg-2) unstable; urgency=medium
+
+  * Add patch from upstream to fix build with libpodofo 0.9.7.
+  * d/copyright: claim copyright for 2021.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 12 Jan 2021 16:11:02 +0100
+
+scribus (1.5.6.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 1.5.6.1+dfsg.
+    https://w.scribus.net/wiki/index.php/1.5.6.1_Release
+  * d/copyright: Update.
+  * Remove patches applied in this release.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 15 Nov 2020 17:50:47 +0100
+
+scribus (1.5.6+dfsg-1) unstable; urgency=medium
+
+  [ Mattia Rizzolo ]
+  * New upstream version 1.5.6+dfsg.
+    https://wiki.scribus.net/canvas/1.5.6_Release
+    https://w.scribus.net/wiki/index.php/1.5.6_Release
+    + Fix a regression on line selection behaviour on HiDPI.  Closes: #972534
+  * Add Craig Bradney's upstream signing key.
+  * d/control: Bump required Qt version to >= 5.12.
+  * Add patch from upstream adding the releases to appdata.xml.
+  * Add patch from upstream fixing the spellcheck plugin loading.
+
+  [ Debian Janitor ]
+  * Refer to common license file for CC0-1.0.
+  * Set upstream metadata fields: Repository.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 14 Nov 2020 17:21:58 +0100
+
+scribus (1.5.5+svn23928+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 1.5.5+svn23928+dfsg.
+    + Move scripter to Python3.  Closes: #938451
+  * d/control:
+    + Suggest scribus-doc, not scribus-ng-doc.  Closes: #958434
+    + Automatically generate the dependencies on scribus-data and scribus-doc
+      based on the name of the source package.
+    + Adjust dependencies for the python2→python3 move.
+    + Add Build-Dependency on libpng-dev.
+  * d/rules: Adjusts for the python2→python3 move.
+  * d/copyright: Update.
+  * Drop all poppler patches, already present upstream.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 11 Aug 2020 11:41:15 +0200
+
+scribus (1.5.5+dfsg-6) unstable; urgency=medium
+
+  * Add patches from upstream to fix compatibility with poppler up to 0.86.
+  * Add some lintian overrides for executable-in-usr-lib.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Thu, 26 Mar 2020 14:11:19 +0100
+
+scribus (1.5.5+dfsg-5) unstable; urgency=low
+
+  * Upload to unstable.
+  * d/control: Bump Standards-Version to 4.5.0, no changes needed.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 25 Jan 2020 15:58:46 +0100
+
+scribus (1.5.5+dfsg-4) experimental; urgency=low
+
+  * Merge scribus-ng and its whole history into scribus, releasing as stable.
+   + NEW MAJOR VERSION 1.5.5.
+     - Completely rewritten text layout engine.  Closes: #737983
+     - Move to Qt5.  Closes: #875180; LP: #1757865
+  * Add a NEWS item regarding the version bump.
+  * d/control: Drop hard-coded dependency on python.  Closes: #948430
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 15 Jan 2020 21:13:07 +0100
+
+scribus-ng (1.5.5+dfsg-3) experimental; urgency=medium
+
+  * d/control:
+    + Build-Depend on python2-dev instead of python-all, since what we are
+      interested in are the header files.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 28 Dec 2019 21:04:57 +0100
+
+scribus-ng (1.5.5+dfsg-2) experimental; urgency=medium
+
+  * d/rules: Stop compressing the TRANSLATION file.
+    Bug: https://bugs.scribus.net/view.php?id=14098
+  * d/control:
+    + Replace build-dependency with unversioned openscenegraph, now that it
+      has been updated and it points to a Qt5 version.
+    + Bump Standards-Version to 4.4.1, no changes needed.
+    + Drop direct dependency on python-tk from the main binary.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 23 Nov 2019 16:49:26 +0100
+
+scribus-ng (1.5.5+dfsg-1) experimental; urgency=medium
+
+  * New upstream version 1.5.5+dfsg.
+    https://wiki.scribus.net/canvas/1.5.5_Release
+  * d/copyright: Update.
+  * Drop patches applied upstream.
+  * d/control:
+    + Bump the debhelper compat level.
+    + Bump Standards-Version to 4.4.0, no changes needed.
+    + Bump the required cmake version to >= 3.12.0
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 06 Aug 2019 10:32:24 +0200
+
+scribus-ng (1.5.4+dfsg-4) experimental; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/copyright: Change Format URL to correct one.
+  * d/watch: Use https protocol.
+
+  [ Mattia Rizzolo ]
+  * Add patch from upstream trunk to allow finding the new hunspell.
+  * Add a bunch of patches from upstream to support poppler up to 0.73.
+    Closes: #919119
+  * d/control: Bump Standards-Version to 4.3.0, no changes needed.
+  * d/copyright: Bump the year for debian/*.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 11 Feb 2019 17:00:21 +0100
+
+scribus-ng (1.5.4+dfsg-3) experimental; urgency=medium
+
+  * Add patch from upstream to fix build with poppler 0.64.
+    + This bumps the required poppler version to >= 0.64 to avoid backporting
+      another big patch to add compat with older versions.
+  * Add patch from upstream to fix build with poppler 0.69.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 05 Nov 2018 10:25:54 +0100
+
+scribus-ng (1.5.4+dfsg-2) experimental; urgency=medium
+
+  * d/control:
+    + Bump Standards-Version to 4.2.1, no changes needed.
+    + Move to openscenegraph-3.4 (from 3.2).  This way we have a qt5-only
+      scribus-ng, as openscenegraph 3.2 uses qt4.
+  * d/scribus-ng-data.links: tweak link so to avoid a broken symlink if
+    somebody installs scribus-ng-data only.  Closes: #905416
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 21 Sep 2018 09:40:05 +0200
+
+scribus-ng (1.5.4+dfsg-1) experimental; urgency=medium
+
+  * New upstream version 1.5.4+dfsg.
+    https://wiki.scribus.net/canvas/1.5.4_Release
+    https://w.scribus.net/wiki/index.php/1.5.4_Release
+  * d/upstream/signing-key.asc: Refresh.
+  * Remove patches applied upstream.
+  * d/control:
+    + Bump Standards-Version to 4.1.4, no changes needed.
+    + Move Vcs-* to salsa.debian.org.
+    + Use HTTPS in the Homepage field.
+    + Add new build-dependencies on libqxp-dev and libzmf-dev.
+  * d/rules:
+    + Use dh_missing instead of the deprecated dh_install --fail-missing.
+  * Bump debhelper compat level to 11:
+    + Remove --parallel, now default
+  * d/scribus-ng.mime: remove: if it's needed I want it upstream first.
+  * d/copyright:
+    + Use HTTPS in the Source field.
+    + Update.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 09 May 2018 00:25:30 +0200
+
+scribus-ng (1.5.3+dfsg-2) experimental; urgency=medium
+
+  * d/control:
+    + Add Build-Depends on libpoppler-cpp-dev.
+    + Drop Recommends of scribus-ng from scribus-ng-data.
+    + Bump Standards-Version to 4.1.2:
+      - Change priority from extra (deprecated) to optional.
+      -  Use HTTPS in d/copyright's Format field.
+    + Declere that scribus-ng can be built without root: R³:no.
+  * Add patch from upstream to fix FTBFS with poppler >= 0.58.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 10 Dec 2017 00:56:26 +0100
+
+scribus-ng (1.5.3+dfsg-1) experimental; urgency=medium
+
+  * New upstream version 1.5.3+dfsg.  Closes: #863687
+    https://wiki.scribus.net/canvas/1.5.3_Release
+    https://w.scribus.net/wiki/index.php/1.5.3_Release
+  * d/copyright:
+    + Update list of excluded files.
+    + Update copyright/license information.
+  * d/patches:
+    + Drop patches applied upstream.
+    + Refresh patches.
+    + findOpenSSL: add to fix build configuration with libpodofo >= 0.9.5.
+  * d/control:
+    + Add new build-dependency on libharfbuzz-dev.
+    + Bump Standards-Version to 4.0.0, no changes needed.
+  * d/rules: don't deal with files not shipped anymore.
+  * d/scirbus-ng-data.install: don't install a file not shipped anymore.
+  * d/upstream/signing-key.asc:
+    + Refresh plinnell's key and add the new "Scribus Team" signing key.
+  * d/scribus-ng.lintian-overrides: drop now seemingly unneeded overrides.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 05 Jun 2017 21:34:24 +0200
+
+scribus-ng (1.5.2+dfsg-4) experimental; urgency=medium
+
+  * d/copyright: bump the year for debian/*.
+  * d/patches:
+    + (finally) drop qreal_double patch: scribus-ng builds fine everywhere now.
+    + fix_FTBFS_BE: mark as upstreamed.
+    + install-icons.patch: new patch from upstream trunk, to install the high
+      resolution icons.
+  * d/scribus-ng.data: stop installing manually the icons, and let the build
+    system do it.
+  * d/rules: add comments link to the upstream bugs we are workarounding.
+  * d/watch: fixup dversionmangle rule.
+    While on it, rewrite it all using a more modern format with version=4.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 15 May 2017 14:17:47 +0200
+
+scribus-ng (1.5.2+dfsg-3) experimental; urgency=medium
+
+  * d/p/series: sort according to their upstream status.
+  * d/patches:
+    + New patches backported from upstream trunk:
+      - appdatadir: update appstream file and install location
+      - upstream_14256-14257: drops mimelnk file, improve .desktop file,
+        install .desktop.  This obsoletes the patch 'desktop.patch' (removed).
+      - dynamic-freedesktop: dynamically generate scribus.desktop and
+        scribus.appdata.xml and name them after -DCUSTOM-VERSIONTAG.
+      - name-manpages-after-versiontag: rename the manpages after
+        -DCUSTOM_VERSIONTAG
+    + New patch not yet upstreamed:
+      - fix_FTBFS_BE: fix FTBFS on big endian architectures.  This requires a
+        new build dependency on extra-cmake-modules.
+    + New non-upstreamable patch:
+      - ng.patch: name the program 'Scribus NG' in the .desktop file.
+  * Do not Build-Depend on libopenscenegraph-dev on arm*, to work around
+    FTBFS on those architectures.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 01 Mar 2017 20:51:59 +0100
+
+scribus-ng (1.5.2+dfsg-2) experimental; urgency=medium
+
+  * [4344537] Ship our own copy of the appstream metada, following the newer
+    standard.  Thanks to Matthias Klumpp for the help.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 18 May 2016 19:26:37 +0000
+
+scribus-ng (1.5.2+dfsg-1) experimental; urgency=medium
+
+  * [ee3f360] Imported Upstream version 1.5.2+dfsg
+    https://wiki.scribus.net/canvas/1.5.2_Release
+    https://w.scribus.net/wiki/index.php/1.5.2_Release
+  * [69d5c94] d/copyright: update
+  * [dc73a1a] d/control: Bump Standards-Version to 3.9.8, no changes needed.
+  * d/patches:
+    + [2a444ba] refresh.
+    + [151c664] system-hyphen: remove as applied upstream.
+    + [48d83a0] qreal_double.patch: disable again.
+  * [0adb7c9] d/rules,d/scribus-ng.install: also install the appdata file.
+  * [feba8b7] d/scribus-ng-data.install: install the new highres icons.
+  * [6353cc3] d/rules: stop installing that awful low res icon.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 17 May 2016 23:40:11 +0000
+
+scribus-ng (1.5.1+dfsg-4) experimental; urgency=medium
+
+  * [7c24df8] Revert change from the previous upload:
+    "[c629407] qreal_double.patch: drop: looks like it builds anyway."
+    It doesn't actually build.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 02 Apr 2016 14:51:36 +0000
+
+scribus-ng (1.5.1+dfsg-3) experimental; urgency=medium
+
+  * [8a35126] d/control: s/QT4/QT5/.
+  * drop patches:
+    + [c629407] qreal_double.patch: drop: looks like it builds anyway.
+    + [35468d8] hyphen-used-as-minus-sign.patch: drop: we gave up on this issue.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 22 Mar 2016 16:28:21 +0000
+
+scribus-ng (1.5.1+dfsg-2) experimental; urgency=medium
+
+  * [124d1dc] debian/patches/system-hyphen: backport patch from upstream to
+    use /usr/share/hyphen as a system place to look up hyphenation dictionaries.
+  * [ad29d5e] debian/scribus-ng-data.links: remove compat symlink to the system
+    hyphenation dictionaries.
+  * debian/control:
+    + [09ce733] wrap-and-sort accordig to my new preferences.
+    + make this more similar to the main scribus package:
+      - [0267e4a] move to priority:extra.
+      - [e9636ff] add missing build-dependency on dh-python.
+      - [f70194f] recommend hyphen-hyphenation-patterns and fonts-dejavu.
+      - [b5a6588] suggest scribus-ng-doc.
+    + [6ac409d] update build dependencies to be sure every optional feature is
+                enabled and drop obsolate version restrictions.
+    + [3e84a4d] build-depend on libfreehand-dev instead of libfreehand-0.1-1.
+  * Changes done to have all 3 scribus packages (scribus and scribus-{ng,trunk})
+    both in their debian version (with non-dfsg file stripped) and upstream
+    build out of the same debian/ directory as much as possible:
+    + [a99238d,79f3a04] debian/rules: add some noop code.
+    + [d2bdb96] use dh-exec parametrize the package name in d/*.{install,links}.
+    + [4976aab] lintian-overrides: override dh-exec-subst-unknown-variable.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 22 Mar 2016 14:33:23 +0000
+
+scribus-ng (1.5.1+dfsg-1) experimental; urgency=low
+
+  * Adopt the package after long time.
+  * [68c7080] Imported Upstream version 1.5.1+dfsg.  Closes: #788944
+    https://wiki.scribus.net/canvas/1.5.1_Release
+    https://w.scribus.net/wiki/index.php/1.5.1_Release
+    + the hyphenation patterns are removed from the tarball, and the system
+      libhyphen is used. Closes: #410093, #534509
+  * [c2e990d] debian/README.source: rewrite.
+  * debian/NEWS:
+    + [6e3e185] fix debian-news-entry-uses-asterisk lintian tag.
+    + [8c11cb7] new entry for 1.5.x.
+  * debian/control:
+    + [7485c82] Set myself as maintainer, thank malex for all the work done!
+    + [839a518,bf4ff69,1c77129,501a2b0,9737b83] add lot of reletions to other
+      packages (Build-Depends, Depends, Recommends, Suggests, etc).
+    + [f7ccddb] fix homepage-in-binary-package lintian tag.
+    + [0c925cd,fdb3752] add Vcs-* fields.
+    + [e4ae168,0b02592,d74f2be] bump standards-version to 3.9.7.
+    + [72db14b] use a useful short description.
+    + [40e4ec2] drop some pointless fields.
+  * debian/patches:
+    + [5ccb6aa] remove_non-free_file.patch: add to fix FTBFS due to repack.
+    + [34b299c] hyphen-used-as-minus-sign.patch: add.
+    + [b662259] qreal_double.patch: add to fix FTBFS on arm* due to qreal/double
+      clashes. I hope I have adapted the patch correctly...
+    + [dcbd175] desktop.patch: add to edit the desktop file to call scribus-ng
+      instead of scribus.
+  * debian/copyright:
+    + [7075c47,46f9af2] update and rewrite using copyright-format 1.0.
+    + [dd83603] update years.
+    + [de83f14] fix unused-file-paragraph-in-dep5-copyright lintian tag.
+  * [05b35d0] debian/{compat,control} use dh9.
+  * debian/rules:
+    + [51068cf,ff68ab0,2a51a71,7321c4e] rewrite.
+    + [100b967] allow installation of AUTHORS file.
+    + [4edd4ac] pass -n option to gzip to allow reproducible builds.
+    + [d8ce176] fix typos in ChangeLogScripts.
+    + [1f43908] properly exclude the plugins from dh_fixperms.
+      Thanks to Philip Muskovac for the idea.
+    + [3fc8c1a] exclude the documentation from dh_compress.
+  * [6f08ea5,c51ba63,b5db4f4] debian/scribus-ng.lintian-overrides: add to
+    override a bunch of shlib-with-executable-bit.
+  * [978e6e0] debian/pycompat: drop, not needed anymore.
+  * [ba8dae2] Split the package into 2 binaries: scribus-ng, scribus-ng-data
+    + Closes: #759132
+    + debian/control: add scribus-data stanza, with appropriate
+      relationshipts.
+    + [5117400,093c220] debian/scribus-ng-data.install: add usr/share stuff.
+    + debian/scribus-ng-data.links: add.
+    + debian/scribus-ng.install: add with all usr/{bin,lib} stuff.
+    + debian/scribus-ng.mime: add, not sure if it is useful.
+    + debian/rules:
+      - update all paths: from debian/scribus-ng/ to debian/tmp.
+      - [e644b25] update configure options.
+      - override dh_install to use the --fail-missing option.
+    + [6f5f8f9] debian/scribus-ng{,-data}.install: install the .desktop file in
+      /usr/share/applications in the scribus-ng binary.
+  * [b0783a6] debian/watch: update and add upstream signing key.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 11 Mar 2016 16:28:00 +0000
+
+scribus (1.4.8+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 1.4.8+dfsg.
+    https://wiki.scribus.net/canvas/1.4.8_Release
+  * d/copyright: Update.
+  * Drop all patches applied upstream, and refresh the rest.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 11 Mar 2019 15:52:13 +0100
+
+scribus (1.4.7+dfsg-3) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/copyright: Change Format URL to correct one.
+  * d/watch: Use https protocol.
+
+  [ Mattia Rizzolo ]
+  * Cherry-pick all patches from upstream 1.4.x branch up to r22825.
+  * Add patch from upstream trunk to fix accidental rotation of EPS files.
+    Closes: #837784
+  * d/control:
+    + Bump Standards-Version to 4.3.0, no changes needed.
+    + Use the new debhelper-compat notation and drop d/compat.
+  * d/copyright: Bump the year for debian/*.
+  * Tweak lintian overrides, drop the now unneeded shlib-with-executable-bit.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 11 Feb 2019 15:54:23 +0100
+
+scribus (1.4.7+dfsg-2) unstable; urgency=medium
+
+  * d/control:
+    + Bump Standards-Version to 4.2.1, no changes needed.
+    + Set Rules-Requires-Root:no.
+  * d/scribus-ng-data.links: tweak link so to avoid a broken symlink if
+    somebody installs scribus-ng-data only.  Closes: #909295
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 21 Sep 2018 10:35:19 +0200
+
+scribus (1.4.7+dfsg-1) unstable; urgency=medium
+
+  * New upstream version 1.4.7+dfsg.
+    https://wiki.scribus.net/canvas/1.4.7_Release
+    + Fix bug where the selection is lost in the story editor.  Closes: #857830
+    + Add German translation to the .desktop file.  Closes: #885449
+  * d/control:
+    + Drop Recommends of scribus from scribus-data.  Closes: #865635
+    + Move Vcs-* to salsa.debian.org.
+    + Bump Priority from extra (deprecated) to optional.
+    + Bump Standards-Version to 4.1.4.
+    + Use HTTPS in the Homepage field.
+  * debian/scriubs-doc.*:
+    + Sync from -doc package, to better comply to policy 3.9.8.
+  * d/copyright:
+    + Use HTTPS in the Format field.
+    + Use HTTPS in the Source field.
+    + Update.
+  * d/upstream/signing-key.asc: Refresh.
+  * d/patches:
+    + Refresh patches.
+    + Add patch to move the appstream file to /usr/share/metainfo.
+  * Bump debhelper compat level to 11.
+  * d/rules:
+    + Stop messing with the .desktop file, now correctly dealt by upstream.
+    + Use dh_missing instead of the deprecated dh_install --fail-missing
+  * Install the new appstream file provided by upstream instead of our
+    own copy.
+  * d/README.source: drop, the content only duplicates d/copyright and
+    other common knowledge on package maintenance.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 09 May 2018 00:10:44 +0200
+
+scribus (1.4.6+dfsg-4) unstable; urgency=medium
+
+  * [bb44541] d/control: add "Multi-Arch: foreign" marker.
+  * [f157a10] Bump debhelper compat level to 10.
+    Drop explicit --parallel option, now default.
+  * [4014b3f] d/watch: only match releases from the 1.4.x branch.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sat, 08 Oct 2016 20:00:41 +0000
+
+scribus (1.4.6+dfsg-3) unstable; urgency=medium
+
+  * [e5bce04] d/control: Bump Standards-Version to 3.9.8, no changes needed.
+  * [7dc4bc5] Copy high res icons from upstream trunk.
+  * [ec53f3e] Stop installing that awful low res icon.
+  * [9dc7943] Add appstream metadata.  This has been copied from the scribus-ng
+    package.  Thanks to Matthias Klumpp for the help-
+  * [cab0b3e] d/scribus.mime: delete, it's probably totally redundant.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 22 May 2016 08:55:50 +0000
+
+scribus (1.4.6+dfsg-2) unstable; urgency=medium
+
+  * debian/control:
+    + [a5cb3d9] Bump Standards-Version to 3.9.7, no changes needed.
+    + [cd83e0b] Use HTTPS in Vcs-Git.
+    + [954d474] specify this is the stable branch also in -data and -dev.
+  * [5481869] Stop installing our copy of scribus.xpm.  The Upstream-provided
+    scribus.png is a good enough icon.
+  * [d485971] Stop installing the TODO file, it contains nothing useful.
+  * Changes done to have all 3 scribus packages (scribus and scribus-{ng,trunk})
+    both in their debian version (with non-dfsg file stripped) and upstream
+    build out of the same debian/ directory as much as possible:
+    + [eca36ad] debian/copyright: Files-Excluded use 1.?.? in the directory name
+    + [1954d97] copy the icon in the right directory here, then ask dh_install
+      to install the whole pixmaps directory.
+    + [4c30a70] debian/control: Build-Depend on dh-exec
+    + debian/rules:
+      - [55c9d59,1d92302] add some noop code.
+      - [27bbe92] export $p to the environment
+      - [c89f99b] just install the .desktop file with a sane name directly in
+        /usr/share/applications, instead of having to move it around later.
+    + [1b5bcc5] parametrize the package name with dh-exec in d/*.{install,links}
+  * [6899854] lintian-overrides: override dh-exec-subst-unknown-variable.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 22 Mar 2016 17:03:41 +0000
+
+scribus (1.4.6+dfsg-1) unstable; urgency=medium
+
+  * [82759c4] Imported Upstream version 1.4.6+dfsg.
+    http://wiki.scribus.net/canvas/Scribus_1.4.6_Release
+  * [42af1c2] debian/{control,copyright}: use my @debian.org email address-
+  * [220819b] debian/patches: refresh them all.
+  * [9468eab] Fix typos in packaging files.  Thanks codespell.
+  * debian/control:
+    + [4b5506d] Remove malex from maintainer and put myself in.
+      Thank you for maintaining scribus for so long!
+    + [01988ce] Remove useless version costraints.
+    + [f81b9d5] Build-dep on dh-python, python-all, instead of python-all-dev.
+    + [5d6f574] Drop old/useless ${python:Provides} substvar.
+  * debian/rules:
+    + [5a6a8db,8e5df2c] parametrize 'scribus' it in a variable.
+    + [cec468d] debian/rules: use DH_VERBOSE=1.
+    + [4ed094a] debian/rules: call dh_python2 over python scripts.
+  * debian/copyright:
+    + [59548e7] Remove scribus-1.4.?/resources/swatches/CIE-* from the tarball.
+    + [304e0e6] Update copyright years to 2016.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 12 Jan 2016 20:11:07 +0000
+
+scribus (1.4.5+dfsg1-5) unstable; urgency=medium
+
+  * [56e1b09] d/p/support-arbitrary-hyphenator-name: allow the dicts to be
+    symlinked.  Closes: #804477
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Mon, 09 Nov 2015 19:12:51 +0000
+
+scribus (1.4.5+dfsg1-4) unstable; urgency=medium
+
+  * [8966ea3] debian/scribus.menu: delete, per recent CTTE decision
+  * [3b57457] debian/rules: just exclude all .so from dh_fixperms.
+    That way it'll run over the directory and thus making the build
+    reproducible again.  Thanks to Santiago Vila for the suggestion.
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Sun, 11 Oct 2015 08:03:03 +0000
+
+scribus (1.4.5+dfsg1-3) unstable; urgency=medium
+
+  * debian/patches:
+    + [6adc33a] support-arbitrary-hyphenator-name: add to actually be able to
+      use the system hyphenators.  Closes: #771471
+    + [fa2d424] meld the patch for #762942 with the last one, they are related
+      and this one is a "consequence" of the old one.
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Sun, 27 Sep 2015 20:03:44 +0000
+
+scribus (1.4.5+dfsg1-2) unstable; urgency=medium
+
+  * debian/control:
+    + [1fb6d0b] use the cgit fronted in Vcs-Browser
+    + [0fbaafb] change to priority:extra from optional, since we depend on a
+      priority:extra package
+  * [0f3a7ac] debian/scribus{,-data}.install: install the .desktop file in
+    /usr/share/applications in the scribus binary
+    Closes: #795705, LP: #1487031
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Thu, 24 Sep 2015 09:45:02 +0000
+
+scribus (1.4.5+dfsg1-1) unstable; urgency=medium
+
+  * [9185477] Imported Upstream version 1.4.5+dfsg1.
+    + This removes several non-dfsg files.
+  * [38cb2ce,bf61884] debian/rules: properly exclude the plugins from
+    dh_fixperms.  Thanks to Philip Muskovac for the idea.
+  * [c370e55] debian/copyright: exclude some non-free files from the packaging.
+  * [cb64d70] debian/copyright: add several files from resources/watches.
+    Closes: #792429
+  * Upload to unstable.
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Tue, 28 Jul 2015 12:27:49 +0000
+
+scribus (1.4.5+dfsg-1) experimental; urgency=medium
+
+  * [bc0356c] Imported Upstream version 1.4.5+dfsg
+  * [ff7ac92] debian/patches/*: refresh against new upstream.
+  * [440376d] debian/{control,rules}: use DejaVu fonts instead of Bitstream
+              ones. LP: #1393349
+  * debian/copyright:
+    + [7e19874,6526887] review everything, to be fully comprehensive.
+    + [a770530] fix typo "s/File/Files/".
+    + [1a6521e] prepend entries in Files-Excluded by 'scribus-1.4.?/' to match
+                tarballs content.
+    + [06ac0f0] bump upstream year to 2015.
+  * [e830dbb] debian/control: remove XB-Python-Version fields (pysupport is not
+    used anymore).
+  * [ae41591] Split the package (Closes: #712718).
+    + [72dc566,0785fac,86ea637] debian/control: add scribus-data and
+      scribus-dev stanzas, with appropriated relationships.
+    + debian/dirs: drop, useless.
+    + debian/docs: drop, useless.
+    + rename debian/{install → scribus.install}, and update it.
+    + debian/scribus-data.install: add with all usr/share stuff.
+    + debian/scribus-dev.install: add with all usr/include stuff.
+    + rename debian/{scribus → scribus-data}.links.
+    + debian/rules:
+      - fix a typo in the ChangeLogScripts file name (it was
+        ChageLogScrips...).
+      - update path (change debian/scribus by debian/tmp).
+      - allow the auto-installation of the AUTHORS and TODO file.
+      - override dh_install to use the --fail-missing option.
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Fri, 17 Apr 2015 12:14:21 +0200
+
+scribus (1.4.4+dfsg1-2) unstable; urgency=medium
+
+  * [a780c7d] Use /usr/share/hyphen to provide hyphenator dicts:
+    + debian/control:
+      - promote hyphen-hyphenation-patterns from suggests to recommends.
+    + debian/patches/762942:
+      - allow the use of symlinks in the directory used to pick up dicts.
+    + debian/scribus.links:
+      - link usr/share/hyphen → usr/share/scribus/dicts.
+    + Closes: #762942
+  * [3590799] debian/control: bump standards-version to 3.9.6.
+  * [7b37ea0] debian/rules: use gzip -n to allow reproducibily building.
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Mon, 20 Oct 2014 21:01:51 +0200
+
+scribus (1.4.4+dfsg1-1) unstable; urgency=medium
+
+  * [54f1b99] Imported Upstream version 1.4.4+dfsg1. (Closes: #747814)
+     + Now scribus compiles fine with clang (Closes: #753277).
+     + Repacked to remove resources/dicts (Closes: #410079).
+       - [41385a7] debian/{copyright,README.source}: update accordingly.
+       - [a2a847a] debian/patches/remove_non-free_file.patch: update.
+       - indirectly closes: #533081.
+       - maybe they are really dfsg-compliant, but given that their licenses
+         are unclear, and that we are not using them, let's remove them.
+  * [e2c4c28] update upstream information:
+    + debian/copyright:
+      - update years.
+      - add Files-Excluded field.
+    + debian/README.source:
+      - rewrite and update it.
+  * debian/control:
+    + [5a38dbf] remove build-dep on gcc, unversion the build-dep on libqt4-dev
+      (4.6 is in oldstable now).
+    + [8f58a88] suggest hyphen-hyphenation-patterns.
+  * debian/rules:
+    + [7ec2bac] remove a now pointless configure switch.
+    + [8279630] enable parallel building.
+    + [898e7c2] enable LFS.
+  * [21cede5] debian/patches/* refresh entire patchset:
+    + [63f3980] spelling-error-in-binary_*: add to fix homonymous lintian tag.
+    + [4d8ab12] qreal_double.patch: update header.
+  * [ac8bb35] debian/control: suggest scribus-doc (non-free).
+  * [0618e96] debian/scribus.links: add to symlink
+    usr/share/doc/scribus/{copyright → COPYING} (used in the scribus interface,
+    in the about window).
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Mon, 25 Aug 2014 09:51:58 +0200
+
+scribus (1.4.2.dfsg.3+r18267-2) unstable; urgency=medium
+
+  * [cee3e4f] switch to dh9:
+    + debian/compat: bump 7 -> 9.
+    + debian/rules: greatly simplify.
+    + debian/control: bump Build-Depend on debhelper to 9.0.
+    + debian/install: add a file, previusly installed via rules.
+    + debian/docs: list here some docs, instead of using rules.
+    + debian/pycompat: drop, not needed anymore.
+    + debian/scribus.lintian: rename to debian/scribus.lintian-overrides
+    + debian/dirs: remove all now useless dirs.
+    + this fixes a lot of hardening-no-relro lintian warnings.
+  * [37e5355] debian/watch: change pgp check from .sig to .asc.
+  * debian/control:
+    + [44fa951] do wrap-and-sort maintenance
+    + [adf01fc] suggest texlive-latex-recommended and cite it in the
+      description (Closes: #732694) (LP: #915388)
+    + [a0354de] recommend ttf-bitstream-vera, which is used in a template
+    + [e2a0e53] recommend fonts-liberation, which is used in templates
+  * debian/rules:
+    + [52415e9] enable full hardening.
+    + [af2f904] remove references to proprietary fonts and use free fonts in
+      templates. (Thanks to Trent W. Buck <trentbuck@gmail.com> for the patch)
+      (Closes: #742003)
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Wed, 23 Jul 2014 09:25:08 +0200
+
+scribus (1.4.2.dfsg.3+r18267-1) unstable; urgency=medium
+
+  * Remove scribus/profiles/GenericCMYK.icm:
+    + [1dd1b23] Repack to remove the non-free profile.
+    + [e32bfb4] debian/README.source: update according to the last repack.
+    + [a674ee9] debian/patches/profiles_cmakelists.patch: update to reflect
+      the last repack.
+  * debian/control:
+    + [aba660c] bump Standards-Version to 3.9.5 (no changes needed).
+    + [8311a60] fix vcs-field-not-canonical lintian tag.
+    + [5197746] fix homepage-in-binary-package lintian tag.
+    + [a864b9d] build-depend on libtiff-dev rather than libtiff4-dev (Closes:
+    #736046).
+    + [40b8286] drop hard depends on python.
+    + [ded9f31] version the build-dep for python-all-dev (to call dh_python2).
+    + [28aed8c] add myself to the Uploaders.
+    + [c3ab5a9] recommend icc-profiles-free
+  * [bb004c8] debian/copyright:
+    + fix unversioned-copyright-format-uri lintian tag.
+    + fix syntax-error-in-dep5-copyright lintian tag.
+    + add myself to copyrights holder of debian/*.
+    + update years.
+  * [b4b6d64] debian/patches/{profiles,scribus}_cmakelists.patch:
+    + fix quilt-patch-missing-description lintian tags.
+  * [9ca8d7f] debian/watch, debian/upstream/signing-key.asc:
+    + update: add some more heuristics to dversionmangle.
+    + add gpg check (fix debian-watch-may-check-gpg-signature lintian tag).
+  * debian/rules:
+    + [21f679d] fix duplicate-changelog-files lintian tag.
+    + [a03f68a] add a call to dh_python2 to proper version the dependence on
+      python.
+    + [c3ef0e7] fix package-contains-empty-directory lintian tag.
+    + [0a4d00b] make the build verbose.
+  * [ed3c167] debian/patch/hyphen-used-as-minus-sign.patch:
+    + add to fix the homonymous lintian tag.
+  * [206a0ed] debian/NEWS: fix debian-news-entry-uses-asterisk lintian tag.
+
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Thu, 03 Jul 2014 14:15:56 +0200
+
+scribus (1.4.2.dfsg.2+r18267-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Remove resources/editorconfig/dot.svg (Closes: #741666):
+    + [e4927c3] Repack the source to remove a non-free image.
+    + [0d54ebf] debian/README.source: update to reflect the above change.
+    + [67e3a92] debian/patch/remove_non-free_file.patch: add
+  * [ba8d805] debian/control: change build-dep liblcms1-dev → liblcms2-dev
+    (Closes: #745526)
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Sun, 01 Jun 2014 19:36:30 +0200
+
+scribus (1.4.2.dfsg.1+r18267-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Repack the source to remove some non-free contents. (Closes: #741666)
+  * debian/README.source: update to reflect the above changes.
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Sun, 11 May 2014 16:29:44 +0200
+
+scribus (1.4.2.dfsg+r18267-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/patch/qreal_double.patch: Avoid qreal/double clashes on ARM
+    (imported from Ubuntu). (Closes: #707882)
+
+ -- Mattia Rizzolo <mattia@mapreri.org>  Sat, 21 Dec 2013 16:13:37 +0100
+
+scribus (1.4.2.dfsg+r18267-1) unstable; urgency=low
+
+  * Update from the upstream svn, which fixes many bugs.
+  * Merge the upstream archive work and the NMU by gregoa@debian.org.
+    - add the required targets to debian/rules
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 24 Apr 2013 11:26:06 -0500
+
+scribus (1.4.2-2) unstable; urgency=low
+
+  * debian/control:
+    - Changed from libaspell-dev to libhunspell-dev as the upstream switched.
+    - Added a libhyphen-dev build-depends to use the system library.
+  * debian/rules: Added a CMAKE stanza for Hunspell.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 17 Jan 2013 16:13:19 -0600
+
+scribus (1.4.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches: Refreshed the top_cmakelist file to avoid installing
+    unnecessary build-related docs.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 16 Jan 2013 22:05:17 -0600
+
+scribus (1.4.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: Updated standards version to 3.9.3.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 30 Apr 2012 19:05:11 -0500
+
+scribus (1.4.0.dfsg+r17300-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix "FTBFS: dh_testroot: You must run this as root (or use
+    fakeroot).":
+    debian/rules: fix build{,-arch,-indep} targets and their dependencies.
+    (Closes: #666373)
+
+ -- gregor herrmann <gregoa@debian.org>  Mon, 04 Jun 2012 18:02:54 +0200
+
+scribus (1.4.0.dfsg+r17300-1) unstable; urgency=low
+
+  * Update from the scribus svn with armel patches included (Closes: #659916).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 14 Feb 2012 15:58:50 -0600
+
+scribus (1.4.0.dfsg+r17287-2) unstable; urgency=low
+
+  * Patch additional files to fix FTBFS on arm*.
+    - debian/patches/armel_ftbfs.patch
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 13 Feb 2012 15:40:28 -0600
+
+scribus (1.4.0.dfsg+r17287-1) unstable; urgency=low
+
+  * New upstream stable release upload into Debian (Closes: #654703).
+  * Applied the Ubuntu armel patch.
+  * Removed non-free color swatches from resources.
+  * debian/control:
+    - Moved icc-profiles from Recommends to Suggests (Closes: #655885).
+    - Updated Standards-Version to 3.9.2.
+    - Updated extended description per lintian warning.
+  * debian/rules:
+    - Update mailcap (Closes: #630751). A request for mime.types update has
+      been sent to the mime-support maintainer.
+    - Added build-arch and build-indep targets per lintian warning.
+  * debian/patches:
+    - top_cmakelists.patch - don't copy extra docs and changelogs.
+    - scribus_cmakelists.patch - don't copy extra docs and changelogs.
+    - scribus_cmakelists.patch - don't install the non-free "doc" dir.
+    - profiles_cmakelists.patch - don't install non-free sRGB profile.
+  * debian/copyright:
+    - Converted to the DEP5 machine readable foramt.
+    - Added licenses for free color swatches.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 09 Feb 2012 21:50:56 -0600
+
+scribus (1.4.0.dfsg-1) unstable; urgency=low
+
+  * New Stable Release - Happy New Year!
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sun, 01 Jan 2012 14:30:15 -0600
+
+scribus (1.4.0.dfsg~rc3+svn20110401-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix headers to not FTBFS with newer CUPS 1.5. (Closes: #639031)
+  * Fix FTBFS in ARM. (Closes: #621401). Patch by Jani Monoses. Thanks to Riku
+    Voipio for the pointer.
+
+ -- Ana Beatriz Guerrero Lopez <ana@debian.org>  Sun, 11 Sep 2011 22:10:03 +0200
+
+scribus (1.4.0.dfsg~rc3+svn20110401-1) unstable; urgency=low
+
+  * New upstream release candidate. This code buids cleanly on all
+    Debian architectures (see scribus-ng), so it's a candidate to replace the
+    Qt3-based 1.3.3.14.
+  * debian/control:
+    - Updated podofo dependency to 0.9.0 now that it's in Debian.
+    - Fixed description to say 'stable branch'.
+    - Changed Architeture to any now that scribus builds cleanly again.
+    - Updated debhelper dependency from 5 to 7.
+  * debian/compate: Updated from 5 to 7.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 01 Apr 2011 12:29:35 -0500
+
+scribus (1.3.9.dfsg+svn20110210-2) unstable; urgency=low
+
+  * Rebuild outside of the pbuilder that already uses libpodofo0.8.4.
+    (Closes: #613774).
+  * debian/control:
+    - Changed the architecture list to those release architectures that can
+      safely build scribus.
+    - Fixed a Qt3->Qt4 type in the long description (Closes: #613554).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 17 Feb 2011 00:23:51 -0500
+
+scribus (1.3.9.dfsg+svn20110210-1) unstable; urgency=low
+
+  * Switch to the Qt4 branch (1.3.4svn) in preparation for Qt3 removal from
+    Debian (Closes: #604519, #551396, #565331, #581500, #550136, #378041,
+    #270614, #270618).
+  * debian/*: Replace with adjusted scribus-ng packaging scripts.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 11 Feb 2011 12:29:27 -0600
+
+scribus (1.3.3.14.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules:
+    - remove vnd.scribus.desktop from /usr/share/applications.
+    - remove deprecated dh_desktop call.
+  * debian/scribus.install: install vnd.scribus.desktop and scribus.desktop
+    into appropriate loations.
+  * debian/scribus.desktop: copy from vnd.scribus.desktop.
+  * debian/control: add scribus-profiles to recommends.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 17 Mar 2010 18:00:34 -0400
+
+scribus (1.3.3.13.dfsg~svn20081228-2) unstable; urgency=low
+
+  * debian/control: Fix a typo on build depends that somehow passed through
+    my pbuilder test.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 23 Jan 2009 16:19:28 -0700
+
+scribus (1.3.3.13.dfsg~svn20081228-1) unstable; urgency=low
+
+  * Upstream svn update - fix the .desktop file again as scribus still ends up
+    in the Other category.
+  * debian/scribus.menu: Shortened description.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 21 Jan 2009 12:54:36 -0700
+
+scribus (1.3.3.13.dfsg~svn20081006-1) unstable; urgency=low
+
+  * Upstream svn update - fix the .desktop file and icon file name to simplify
+    debian packaging.
+  * debian/scribus.install:
+    - Install the icon file properly.
+    - Don't install the debian/scribus.desktop anymore as upstream's been
+      fixed.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 07 Oct 2008 13:46:40 -0600
+
+scribus (1.3.3.13.dfsg~svn20080709-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sat, 20 Sep 2008 08:37:20 -0600
+
+scribus (1.3.3.12.dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #487288).
+  * Some of the changes below are done to bring the Debian package closer to
+    its Ubuntu version at the urging of Scott Kitterman <scott@kitterman.com>
+    from the Ubuntu team.
+  * debian/control:
+    - changed the dependency on python2.4-dev to python-all-dev.
+    - changed the architecture list to any (Closes: #481441).
+    - removed the erroneous statement about this being a developmental branch
+      of Scribus from the long description.
+    - removed the revision from build-depends cmake version per lintian W:.
+    - updated Standards-Version to current 3.8.0.
+    - removed xutils from build-depends per lintian E:.
+  * debian/rules:
+    - use a copy of desktop file with fixed it icon path (Closes: #478926).
+    - removed the obsolete linda overrides installation directive.
+    - added -DWANT_LIB32:BOOL=1 \ to use a correct location for builds.
+    - removed leading '-' from clean-patched target directives per lintian W:.
+    - removed the make clean directive since this is an out-of-tree build and
+      I can simply rm -rf build and install dirs.
+  * debian/scribus.dirs: added usr/share/man/de/man1 for the german manpage.
+  * debian/scribus.linda: removed the obsolete linda overrides file.
+  * debian/scribus.lintian: added overrides for two bogus warnings and an
+    error (3 new lines at the bottom).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 02 Jul 2008 13:42:07 -0600
+
+scribus (1.3.3.11.dfsg-2) unstable; urgency=low
+
+  * Remove a build dependency on libqt3-compat-headers that is being
+    deprecated (Closes: #464956).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 11 Feb 2008 23:11:04 -0700
+
+scribus (1.3.3.11.dfsg-1) unstable; urgency=low
+
+  * New stable upstream release (Closes: #448948).
+  * debian/watch: fixed the dversionmangle option (Closes: #449661).
+  * debian/README.Debian: Corrected a note about the color profile
+    installation to enable color management.
+  * debian/control:
+    - Updated Standards-Version to 3.7.3.
+    - Moved Homepage to the list of control fields.
+  * debian/scribus.menu: Changed section from Apps to Applications.
+  * debian/rules:
+    - Move German manpage to a correct directory.
+    - Remove an empty upstream changelog file.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sat, 12 Jan 2008 01:17:28 -0700
+
+scribus (1.3.3.10.dfsg~svn20071109-1) unstable; urgency=low
+
+  * Upstream svn update.
+  * Changed location of the translation files (Closes: #448948).
+  * Updated the watch file for sourceforge (Closes: #449661).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 09 Nov 2007 13:01:56 -0700
+
+scribus (1.3.3.9.dfsg+20070808svn-2) unstable; urgency=low
+
+  * debian/control: Update list of build architectures to include armel,
+    kfreebsd-i386 and kfreebsd-amd64 (Closes: #437062).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 10 Aug 2007 12:56:26 -0600
+
+scribus (1.3.3.9.dfsg+20070808svn-1) unstable; urgency=low
+
+  * New upstream svn update - various fixes.
+  * debian/control:
+    - Changed "Architecture:" to include all arches except mips and mipsel due
+      to the failure of Debian mips people to fix their toolchain issues after
+      months of waiting and asking.
+    - Added scribus-doc to Suggests.
+  * debian/README.Debian: Added an explanation about interface language
+    selection (Closes: #429760).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 08 Aug 2007 13:43:28 -0600
+
+scribus (1.3.3.9.dfsg+20070716svn-1) unstable; urgency=low
+
+  * New upstream snapshot. Upload to see if the mips, etc. toolchaing problems
+    have been worked out.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 16 Jul 2007 15:03:52 -0600
+
+scribus (1.3.3.9.dfsg+20070617svn-1) unstable; urgency=low
+
+  * Upstream update. Upload to force new builds on mips and mipsel.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 19 Jun 2007 12:18:19 -0600
+
+scribus (1.3.3.9.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: Removed an explicit dependency on liblcms1 as I fixed the
+    shlibs problem in liblcms1 itself and this workaround is no longer
+    necessary.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 07 May 2007 00:03:21 -0600
+
+scribus (1.3.3.8.dfsg+cvs20070420-1) unstable; urgency=low
+
+  *  New cvs update with a fix for a broken EPS import really in this time.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 20 Apr 2007 08:53:05 -0600
+
+scribus (1.3.3.8.dfsg+cvs20070417-1) unstable; urgency=low
+
+  *  New cvs update with a fix for a broken EPS import.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 18 Apr 2007 16:08:53 -0600
+
+scribus (1.3.3.8.dfsg+cvs20070409-2) unstable; urgency=low
+
+  * 1.3.3.x seris has reworked dialog windows (Closes: #202482).
+  * debian/control: Add a recommends on cupsys-bsd (Closes: #416923).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 12 Apr 2007 11:36:47 -0600
+
+scribus (1.3.3.8.dfsg+cvs20070409-1) unstable; urgency=low
+
+  * Etch is released! It's time to migrate the current stable Scribus series
+    to the "scribus" package status.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 09 Apr 2007 11:21:50 -0600
+
+scribus-ng (1.4.0.dfsg+r17300-1) unstable; urgency=low
+
+  * Prepare a dummy transitional package to converge on the 1.4.0 release.
+  * debian/NEWS: update the news.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 15 Feb 2012 15:57:12 -0600
+
+scribus-ng (1.4.0.dfsg~rc6-1) unstable; urgency=low
+
+  * Upstream Release Candidate update.
+  * debian/control: updated standards version to 3.9.2.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 18 Oct 2011 16:23:50 -0500
+
+scribus-ng (1.4.0.dfsg~rc5-1) unstable; urgency=low
+
+  * Upstream Release Candidate update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sat, 18 Jun 2011 22:52:35 -0500
+
+scribus-ng (1.4.0.dfsg~rc4-1) unstable; urgency=low
+
+  * Upstream Release Candidate update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 30 May 2011 20:03:22 -0500
+
+scribus-ng (1.4.0.dfsg~rc3+svn20110504-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 04 May 2011 17:12:10 -0500
+
+scribus-ng (1.4.0.dfsg~rc3+svn20110414-1) unstable; urgency=low
+
+  * Upstream svn update with many bug fixes (see bugs.scribus.net).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 14 Apr 2011 09:32:09 -0500
+
+scribus-ng (1.4.0.dfsg~rc2+svn20110322-1) unstable; urgency=low
+
+  * Update from upstream svn for urgent text handling bug fixes.
+  * Build with podofo 0.9.0.
+  * debian/rules: Removed the unused patch and unpatch stanzas.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 22 Mar 2011 15:11:40 -0500
+
+scribus-ng (1.4.0.dfsg~rc2-1) unstable; urgency=low
+
+  * 2nd Release Candidate for new stable 1.4.0.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 08 Mar 2011 11:21:53 -0600
+
+scribus-ng (1.4.0.dfsg~rc1-1) unstable; urgency=low
+
+  * 1st Release Candidate for new stable 1.4.0 (Closes: #577636, #607663,
+    #608596, #611960, #601581, #586266, #589114, #459576, #520155, #594058,
+    #589197, #588840, #579052, #534786, #529593, #531483, #598751).
+  * debian/compat: Changed debhelper compatibility level to 7 as nothing
+    below that has recent enough Qt4 anyway.
+  * debian/control:
+    - Changed debhelper depends to 7.
+    - Changed Qt3 to Qt4 in the long description.
+    - Removed armel and hurd-i386 build architectures.
+  * debian/changelog:
+    - Changed through copyright time from 2008 to 2011.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 16 Feb 2011 14:27:59 -0600
+
+scribus-ng (1.3.9.dfsg+svn20110107-1) unstable; urgency=low
+
+  * Upstream svn update with a number of bug fixes.
+  * Switched to 3.0 (quilt) source package format. See below:
+  * debian/source/format: added this file with "3.0 (quilt)".
+  * debian/control:
+    - Removed build-depends on dpatch.
+    - Added build-depends on quilt for the pbuilder.
+  * debian/rules: Removed dpatch stanzas.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 07 Jan 2011 09:35:28 -0600
+
+scribus-ng (1.3.9.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+    - Updated build-depends on libpodofo-dev to libpodofo0.8.4.
+    - Updated build-depends on libqt4 to the current minimum of 4.6.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 01 Dec 2010 21:46:35 -0600
+
+scribus-ng (1.3.8.dfsg-1) unstable; urgency=low
+
+  * New Upstream release.
+  * debian/control:
+    - Updated standards-version to 3.9.1.
+    - Added misc:Depends to package depends per lintian warning.
+  * debian/rules:
+    - removed a deprecated dh_desktop call.
+  * debian/scribus-ng.lintian: Updated overrides for warnings that cannot be
+    fixed for this software.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 26 Jul 2010 19:20:43 -0400
+
+scribus-ng (1.3.7.dfsg~svn20100507-1) unstable; urgency=low
+
+  * Upstream svn update. Transition to libpodofo0.8.0.
+  * debian/control:
+    - Updated libpodofo dependcy.
+    - Updated Standards-Version to 3.8.4.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 13 May 2010 16:00:57 -0400
+
+scribus-ng (1.3.6.dfsg-2) unstable; urgency=low
+
+  * Added a build-depends on libpodofo0-dev.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 24 Mar 2010 19:26:53 -0400
+
+scribus-ng (1.3.6.dfsg-1) unstable; urgency=low
+
+  * New Upstream release.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 17 Mar 2010 18:48:14 -0400
+
+scribus-ng (1.3.5.dfsg+svn20091216-2) unstable; urgency=low
+
+  * debian/rules: updated alpha target detection to set correct build options
+    and prevent a FTBFS.
+  * debian/control: removed hurd-* architectures from the architecture list as
+    the program doesn't build on hurd at all due to a cmake-related problem.
+    The build doesn't find the topmost CMakeLists.txt.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 17 Dec 2009 09:47:55 -0600
+
+scribus-ng (1.3.5.dfsg+svn20091216-1) unstable; urgency=low
+
+  * Upstream svn update (Closes: #559133).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 16 Dec 2009 16:29:04 -0600
+
+scribus-ng (1.3.5.dfsg+svn20091030-1) unstable; urgency=low
+
+  * Upstream svn update with bugfixes. Prepare the tarball for uploading into
+    Debian (Closes: #534510, #552026).
+  * debian/control:
+    - Refresh arch list.
+    - Update Standards-Version to 3.8.3.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 30 Oct 2009 20:00:37 -0500
+
+scribus-ng (1.3.5.dfsg-1) unstable; urgency=low
+
+  * New upstream developmental release.
+  * debian/control:
+    - Updated Architecture list.
+    - Removed cupsys-bsd from alternative depends.
+    - Removed  | libcupsys2-dev from build-depends.
+    - Changed libboost-python1.35-dev to libboost-python-dev.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 13 Aug 2009 23:37:50 -0400
+
+scribus-ng (1.3.5.dfsg~svn20090704rc3-1) unstable; urgency=low
+
+  * Scribus 1.3.5 Release Candidate 3.
+  * debian/control:
+    - Updated Standards-Version to 3.8.2.
+    - Updated dependency on libboost to a versioned variant that is present on
+      both Debian and Ubuntu latest three branches.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sun, 05 Jul 2009 10:53:51 -0400
+
+scribus-ng (1.3.5.dfsg~svn20090603rc2-1) unstable; urgency=low
+
+  * Scribus 1.3.5 Release Candidate 2.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 03 Jun 2009 16:31:54 -0500
+
+scribus-ng (1.3.5.dfsg~svn20090518rc1-1) unstable; urgency=low
+
+  * Scribus 1.3.5 Release Candidate 1.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 18 May 2009 18:53:16 -0500
+
+scribus-ng (1.3.5.dfsg~svn20090515-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 15 May 2009 15:57:11 -0500
+
+scribus-ng (1.3.5.dfsg~svn20090419-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sun, 19 Apr 2009 20:18:56 -0500
+
+scribus-ng (1.3.5.dfsg~svn20090415-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 15 Apr 2009 21:59:37 -0500
+
+scribus-ng (1.3.5.dfsg~svn20090407-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 07 Apr 2009 08:55:28 -0600
+
+scribus-ng (1.3.5.dfsg~svn20090226-1) unstable; urgency=low
+
+  * Upstream svn update.
+  * debian/control: Added a dependency on libaspell-dev as one of Ubuntu users
+    brought up an issue with spellchecker not working.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 26 Feb 2009 17:20:38 -0700
+
+scribus-ng (1.3.5.dfsg~svn20090224-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 24 Feb 2009 13:52:58 -0700
+
+scribus-ng (1.3.5.dfsg~svn20090208-3) unstable; urgency=low
+
+  * debian/control: Build with PoDoFo - add libpodofo0-dev to build-depends.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 11 Feb 2009 12:24:44 -0700
+
+scribus-ng (1.3.5.dfsg~svn20090208-2) unstable; urgency=low
+
+  * debian/control: Use "type-handling -n arm,armel,armeb any" to generate the
+    list of architectures to build on.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 09 Feb 2009 09:25:18 -0700
+
+scribus-ng (1.3.5.dfsg~svn20090208-1) unstable; urgency=low
+
+  * debian/control: Use a manual list of architectures to build on to exclude
+    arm/armel where a solution to FTBFS due to a recent changeover of qreal
+    typedef from double to float on these arches is a massive and potentially
+    unsolvable problem for Scribus 1.3.5 codebase (Closes: #514448).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sun, 08 Feb 2009 16:52:14 -0700
+
+scribus-ng (1.3.5.dfsg~svn20090125-1) unstable; urgency=low
+
+  * Upstream svn update - fixes a FTBFS on arm.
+  * debian/control: Removed Ghostscript depends alternatives to ghostscript
+    as scribus-ng can't be built on older distros due to the Qt 4.4
+    dependency, so there is no reason for obsolete gs (Closes: #498139).
+  * debian/scribus-ng.lintian: Updated overrides.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 26 Jan 2009 09:54:28 -0700
+
+scribus-ng (1.3.5.dfsg~svn20090123-1) unstable; urgency=low
+
+  * Upstream svn update (Closes: #500617, #500902, #505721, #498772, #447603,
+    #512598) as those reports are either applicable only to the old 1.3.4
+    series or cannot be confirmed in the current version.
+  * debian/patches/04_scribus.desktop.dpatch: Added a debian diff for the
+    upstream scribus.desktop file, which I will use as it's been updated to
+    conform to freedesktop.org desktop file policy.
+  * debian/scribus-ng.desktop: Removed this file as I switched to using a
+    patched upstream .desktop file.
+  * debian/README.source: Added a file that describes the process of turning a
+    Scribus svn checkout into the .orig.tar.gz tarball for building a
+    scribus-ng debian package.
+  * debian/rules: Added a rule to install the patched upstream desktop file
+    into the proper location.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 23 Jan 2009 12:40:09 -0700
+
+scribus-ng (1.3.5.dfsg~svn20081125-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 25 Nov 2008 08:57:34 -0700
+
+scribus-ng (1.3.5.dfsg~svn20081031-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 31 Oct 2008 10:22:22 -0600
+
+scribus-ng (1.3.5.dfsg~svn20081027-1) unstable; urgency=low
+
+  * Upstream svn update.
+  * Removed win32 directory to trim about 4.5Mb of files useless for linux.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 27 Oct 2008 15:18:37 -0600
+
+scribus-ng (1.3.5.dfsg~svn20080921-1) unstable; urgency=low
+
+  * Upstream svn update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sun, 21 Sep 2008 15:45:50 -0600
+
+scribus-ng (1.3.5.dfsg~svn20080717-2) unstable; urgency=low
+
+  * debian/patches/03_canvasgesture_resize.cpp.dpatch: Try this fix for the
+    arm/armel FTBFS problem (#include <QGlobalStatic>).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 21 Jul 2008 14:47:32 -0600
+
+scribus-ng (1.3.5.dfsg~svn20080717-1) unstable; urgency=low
+
+  * Switch to the current active developmental tree based on the Qt4 code.
+    1.3.4 tree is not being maintained anymore and it's time to switch to
+    the source that bug reports can actually be filed against.
+  * debian/compat: Switched to compat level 5.
+  * debian/control:
+    - Updated Build-depends to reflect the qt4/cmake nature of this code.
+    - Updated Standards-Version to 3.8.0.
+    - Updated ghostscript Depends to the current package names.
+    - Added icc-profiles to Recommends.
+    - Added "scribus-svn (<= 1.3.5~svn20080708-1)" to both Conflicts and
+      Replaces. In the end, there can be only one 1.3.5svn package.
+    - Updated the long description to stronly indicate the experimental nature
+      of this package.
+    - Added a Build-Depends on libboost-python-dev.
+    - Changed from build depends on libcupsys2-dev to libcups2-dev with older
+      package name left as an alternative for smooth installation on older
+      Debian/Ubuntu releases.
+    - Changed from depends on cupsys-bsd to cups-bsd with older package name
+      left as an alternative for smooth installation on older Debian/Ubuntu
+      releases.
+  * debian/NEWS: Updated the news people will see when installing the package.
+  * debian/copyright: Updated and streamlined the copyright file.
+  * debian/rules: Updated for cmake/qt4 compilation.
+  * debian/scribus-ng.menu: Changed top section from Apps to Applications.
+  * debian/scribus-ng.lintian: Updated overrides.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 17 Jul 2008 12:17:30 -0600
+
+scribus-ng (1.3.4.dfsg+svn20071126-1) unstable; urgency=low
+
+  * New upstream svn update (dictionaries moved from /usr/lib/ to /usr/share).
+  * debian/rules: use "include /usr/share/dpatch/dpatch.make" in place of
+    patch-stamp and unpatch targets.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 26 Nov 2007 19:59:55 +0000
+
+scribus-ng (1.3.4.dfsg+svn20071115-1) unstable; urgency=low
+
+  * Upstream svn update (Closes: #447480, #448949).
+  * debian/NEWS: Added a note for users wanting stable Scribus to switch to
+    the "scribus" package (Closes: #427638).
+  * debian/watch: Updated the watch regex to properly track sourceforge
+    releases for this branch (Closes: #449700).
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sat, 11 Aug 2007 17:41:51 -0600
+
+scribus-ng (1.3.4.dfsg-1) unstable; urgency=low
+
+  * Upstream release.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 28 May 2007 10:17:28 -0600
+
+scribus-ng (1.3.4.dfsg~cvs20070521-1) unstable; urgency=low
+
+  * New cvs snapshot.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 21 May 2007 09:36:36 -0600
+
+scribus-ng (1.3.4.dfsg~cvs20070510-1) unstable; urgency=low
+
+  * New cvs snapshot.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 10 May 2007 09:38:30 -0600
+
+scribus-ng (1.3.4.dfsg~cvs20070507-1) unstable; urgency=low
+
+  * New cvs snapshot (Closes: #422220).
+  * debian/control:
+    - Removed the explicit dependency on liblcms1 as I fixed the shlibs
+      problem in liblcm1 itself.
+    - Cleaned up Replaces.
+  * debian/scribus-ng.lintian: Updated overrides.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 07 May 2007 16:40:05 -0600
+
+scribus-ng (1.3.4.dfsg~cvs20070502-1) unstable; urgency=low
+
+  * New cvs snapshot.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 02 May 2007 15:50:17 -0600
+
+scribus-ng (1.3.4.dfsg~cvs20070427-1) unstable; urgency=low
+
+  * New cvs snapshot.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 27 Apr 2007 10:31:41 -0600
+
+scribus-ng (1.3.4.dfsg~cvs20070413-1) unstable; urgency=low
+
+  * Start tracking cutting edge cvs code as "scribus" has been updated to the
+    current stable 1.3.3.x branch.
+  * debian/control: Removed an explicit dependency on liblcms1 as I fixed this
+    problem in the liblcms1 itself.
+  * debian/patches/02_profiles.dpatch: Fixed the dfsg patch for removal of
+    non-free profiles.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 19 Apr 2007 19:21:54 -0600
+
+scribus-ng (1.3.3.8.dfsg-2) unstable; urgency=low
+
+  * debian/patches/05-08...dpatch: Fix for the transparent fix upscaling
+    issue.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu,  1 Mar 2007 13:09:45 -0700
+
+scribus-ng (1.3.3.8.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/02_profiles.dpatch: Made a new patch to correspond to the
+    upstream update.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sat, 24 Feb 2007 17:57:27 -0700
+
+scribus-ng (1.3.3.7.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * This is the first package version to use cmake insteade of autotools.
+  * debian/patches:
+    - Removed autotools-related patches.
+    - Added 01_cmake_scribus.dpatch - remove 'doc' directory from the  build.
+    - Added 02_cmake_profiles.dpatch - remove non-free sRGB profile and its
+      readme.
+    - Added 03_cmake_rpath.dpatch - patch top level CMakeLists.txt to force
+      cmake to honor "-DCMAKE_SKIP_RPATH:BOOL=1" to work around a bug in older
+      cmake versions.
+  * debian/control:
+    - Changed dependencies from autoconf (>=2.57) and automake1.9 (>=1.9) to
+      cmake (>= 2.4.4-1).
+    - Added a dependency on python because lintian errors.
+  * debian/rules:
+    - Adjusted rules to build with cmake instead of autotools (multiple changes).
+    - Parse $DEB_BUILD_OPTIONS for the parallelbuild string and run make -j5
+      if it is set - fails, so comment it out for now as the build system is
+      not safe with this option because of the absence of dependency checking.
+  * debian/scribus-ng.lintian: Updated overrides for the new build system.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue,  9 Jan 2007 13:25:11 -0700
+
+scribus-ng (1.3.3.6.dfsg-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue,  5 Dec 2006 15:28:45 -0700
+
+scribus-ng (1.3.3.5.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches/01_profiles_makefile_am.dpatch: Reflecte the removal of the
+    non-free ICC profile.
+  * debian/patches/02_top_makefile_am.dpatch: Install the scribus.xml mime
+    types file as scribus-ng.xml.
+  * debian/rules: Remove the erroneous `/usr/share/scribus/' directory before
+    building the package.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 10 Nov 2006 12:57:17 -0700
+
+scribus-ng (1.3.3.4.dfsg-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/scribus-ng.xml: Removed this file as the upstream included it in
+    this release.
+  * debian/rules: Added a rule to remove /usr/share/doc/scribus as I couldn't
+    find the makefile rule that created it.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue,  3 Oct 2006 10:29:33 -0600
+
+scribus-ng (1.3.3.3.dfsg-2) unstable; urgency=low
+
+  * Revert relibtoolization for now to fix the problem with building shared
+    objects for plugins.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 10 Aug 2006 13:48:39 -0600
+
+scribus-ng (1.3.3.3.dfsg-1) unstable; urgency=low
+
+  * New upstream release on 2006-08-07. Performed removal of the non-free doc
+    and profile directories, install location relocation, and source
+    libtoolization (libtoolize -c -f; aclocal; autoconf).
+  * debian/patches: Removed the patch for admin/cvs.sh that was folded into
+    the upstream source.
+  * debian/control: Added an explicit dependency on liblcms1 (>= 1.13) in
+    order to override the ${shlibs:Depends} that creates a dependency on 1.08
+    (Closes: #379077) finally.
+  * Updated for the new python policy compatibility (Closes: #380947).
+    + debian/pycompat: Added this file with a value of "2" per new python
+      policy.
+    + debian/control:
+      - Changed debhelper dependency from "4" to "5.0.37.2".
+      - Added ${python:Depends} to the Depends field.
+      - Added a XB-Python-Version: ${python:Versions} field.
+      - Added a "Provides: ${python:Provides}" field.
+      - Changed "python2.3-dev" to python-all-dev (>= 2.3.5-11) in
+        Build-Depends.
+  * debian/scribus-ng.lintian: Updated lintian overrides.
+  * debian/scribus-ng.lintian: Added a linda override for the "is not an ELF
+    file or script" warning for .la files.
+  * debian/watch: Updated the watch regex to accommodate a four digit version
+    number.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue,  8 Aug 2006 17:21:39 -0600
+
+scribus-ng (1.3.3.2.dfsg-2) unstable; urgency=medium
+
+  * debian/patches/02-cvs_sh.dpatch: Added a patch that fixes autoconf-2.60
+    detection failure (Closes: #379893). Setting urgency=medium for this.
+  * debian/control: Checked the liblcms1 dependency and it is >= 1.13
+    (Closes: #379077).
+  * debian/scribus-ng.lintian: Updated lintian overrides.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 28 Jul 2006 13:19:41 -0600
+
+scribus-ng (1.3.3.2.dfsg-1) unstable; urgency=low
+
+  * New upstream release on May 27th, 2006. This release is compatible with
+    libfreetype6-2.2 and should fix the FTBFS on s390 (Closes: #370574).
+  * debian/control: Updated Standards-Version to 3.7.2.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 06 Jun 2006 10:48:32 -0600
+
+scribus-ng (1.3.3.1.dfsg-1) unstable; urgency=low
+
+  * First upload into Debian (Closes: #362266).
+  * New upstream point release of the developmental branch of Scribus on April
+    10, 2006.
+  * debian/rules:
+    - Fixed a rule to delete upstream COPYING file as it was looking in
+      $(package)/share/ instead of $(package)/usr/share/.
+    - Changed the 'dh_clean -k' rule in 'install-stamp:' to 'dh_clean' to
+      completely clean the build directories as I don't build multiple
+      binaries from this source anymore.
+    - Moved dh_install above the manual rules.
+    - Added a rule to move the dictionary README files to
+      /usr/share/scribus-ng/doc/dicts..
+    - Added a rule to remove INSTALL and README.MacOSX files from
+      /usr/share/doc/scribus-ng as per lintian warnings.
+  * debian/scribus-ng.dirs: Added a rule to create a
+    /usr/share/doc/scribus-ng/dicts directory for dictionary readme files.
+  * debian/patches/01_Makefile.am.dpatch: Prepared a monolithic patch to
+    convert scribus into scribus-ng at build time.
+  * Removed unneeded scribus-ng.links file.
+  * debian/scribus-ng.lintian: Added a minimal set of necessary overrides for
+    the script-not-executable, executable-not-elf-or-script, and
+    shlib-with-executable-bit warnings.
+  * debian/control: Removed the scribus-cvs dummy package and updated
+    description to point out that scribus-ng will be tracking developmental
+    branch of scribus.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 11 Apr 2006 11:45:49 -0600
+
+scribus-ng (1.3.2+cvs20060405-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-04-05 branched into a 1.3.3.1 branch for
+    stabilization before a release.
+  * Changed the name to scribus-ng package in preparation of the introduction
+    of this package into Debian/main archive and switch from cvs to
+    subversion upstream, so -cvs is not going to be an appropriate suffix.
+  * Edited in place every Makefile.am file to change the DOCDIR to scribus1.2
+    for now. I'll do it upstream of Debian packaging later.
+  * Edited in place every Makefile.am file to change the LIBDIR to scribus1.2
+    for now. I'll do it upstream of Debian packaging later.
+  * debian/control:
+    - Changed package name from scribus-cvs to scribus-ng.
+    - Added scribus-cvs to Conflicts and Replaces fields to ensure a smooth
+      upgrade.
+  * debian/NEWS: Updated the news file to reflect this switch in packaging.
+  * debian/copyright: Verified and updated the copyright information.
+  * debian/rules:
+    - Changed rules to reflect the package name change.
+    - Added a rule to remove the superfluos "COPYING" file.
+    - Changed rules to reflect the move from /usr/local to /usr hierarchy.
+  * Moved the docs and ICC profiles out of the package to make it suitable for
+    Debian/main.
+  * debian/scribus-ng.menu: Changed -cvs to -ng to reflect name change.
+  * debian/scribus-ng.install: Changed -cvs to -ng to reflect name change.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed,  5 Apr 2006 13:44:32 -0600
+
+scribus-cvs (1.3.2+cvs20060323-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-03-23.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu, 23 Mar 2006 17:48:32 -0700
+
+scribus-cvs (1.3.2+cvs20060314-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-03-14.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Tue, 14 Mar 2006 19:02:28 -0700
+
+scribus-cvs (1.3.2+cvs20060313-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-03-13.
+  * debian/compat: Changed the compatibility level back to 4 to facilitate
+    semi-automated backporting to Debian/stable and Ubuntu Hoary and Breezy.
+  * debian/control: Changed debconf version in Build-Depends to 4 for the same
+    reason as debian/compat version.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 13 Mar 2006 17:37:53 -0700
+
+scribus-cvs (1.3.2+cvs20060312-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-03-12. This is the first package in the "Let's
+    build a package a day until the 1.3.3 release" series.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Sun, 12 Mar 2006 14:18:45 -0700
+
+scribus-cvs (1.3.2+cvs20060309-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-03-09.
+  * debian/scribus-cvs.xpm: Updated the xpm menu icon.
+  * debian/scribus-cvs-3d.xpm: Removed the obsolete menu icon.
+  * debian/scribus-cvs.install: Updated rules for installation of menu icons.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Thu,  9 Mar 2006 10:52:51 -0700
+
+scribus-cvs (1.3.2+cvs20060217-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-02-17.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 17 Feb 2006 16:56:41 -0700
+
+scribus-cvs (1.3.2+cvs20060215-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-02-15.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Wed, 15 Feb 2006 15:48:43 -0700
+
+scribus-cvs (1.3.2+cvs20060213-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-02-13.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 13 Feb 2006 17:08:40 -0700
+
+scribus-cvs (1.3.2+cvs20060203-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-02-03.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri,  3 Feb 2006 17:14:32 -0700
+
+scribus-cvs (1.3.2+cvs20060130-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-01-30.
+  * debian/NEWS: Added a news file temporarily to tell users about the
+    /usr/local/bin/scribus to /usr/bin/scribus-cvs transition.
+  * debian/scribus-cvs.lintian: Added fresh overrides for /usr/local warnings
+    and errors.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 30 Jan 2006 11:33:51 -0700
+
+scribus-cvs (1.3.2-2) unstable; urgency=low
+
+  * debian/watch: Added a watch file.
+  * debian/scribus-cvs.lintian: Move it to /usr/share/lintian/overrides from
+    /usr/local/share...
+  * debian/rules:
+    - Removed DH_COMPAT as debian/compat file is now used.
+    - Added a rule to install
+      /usr/share/{linda,lintian}/scribus-cvs.overrides instead of
+      /usr/local/share....
+    - Added a rule to move /usr/local/bin/scribus to /usr/bin/scribus-cvs.
+    - Added rules to install the icons and manpage to the correct filenames
+      and locations.
+  * debian/control:
+    - Changed the short Description slightly.
+    - Updated the debhelper dependency to reflect compat level 5.
+  * debian/compat: Changed compatibility level to 5.
+  * debian/scribus-cvs.install: Install icons into /usr/share/pixmaps, .xml
+    into /usr/share/mime/packages, and .desktop into /usr/share/applications.
+  * debian/scribus-cvs.lintian: Added more overrides to cover all
+    /usr/local-related warnings and errors.
+  * debian/dirs: make the necessary /usr/bin, /usr/share/man/pl/man1, etc.
+    dirs.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 23 Jan 2006 12:35:24 -0700
+
+scribus-cvs (1.3.2-1) unstable; urgency=low
+
+  * New upstream release on Jan 22, 2006.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 23 Jan 2006 10:48:48 -0700
+
+scribus-cvs (1.3.1+cvs20060120-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-01-20.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Fri, 20 Jan 2006 15:06:22 -0700
+
+scribus-cvs (1.3.1+cvs20060116-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-01-16.
+  * debian/control: Changed the maintainer address.
+  * debian/copyright: Changed the maintainer address.
+
+ -- Oleksandr Moskalenko <malex@debian.org>  Mon, 16 Jan 2006 11:59:20 -0700
+
+scribus-cvs (1.3.1+cvs20060111-1) unstable; urgency=low
+
+  * Upstream cvs update on 2006-01-11.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 11 Jan 2006 16:28:48 -0700
+
+scribus-cvs (1.3.1+cvs20051213-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-12-13.
+  * debian/control: Removed xlibs-dev, libjpeg62-dev, libpng3-dev, and
+    libfreetype6-dev from Build-Depends: as libqt3-mt-dev already depends on
+    them on their replacements. This should also carry scribus through the
+    upcoming libfreetype6 and libpng-12-0 transitions.
+  * debian/scribus.desktop: Updated from upstream.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 13 Dec 2005 10:34:15 -0700
+
+scribus-cvs (1.3.1+cvs20051129-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-11-29.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 29 Nov 2005 09:51:45 -0700
+
+scribus-cvs (1.3.1+cvs20051128-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-11-28.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 28 Nov 2005 14:11:02 -0700
+
+scribus-cvs (1.3.1+cvs20051117-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-11-17.
+  * Debian.README: Updated the file to 1.2.3 README level.
+  * debian/compat: Use a "compat" file instead of a variable in debian/rules.
+  * Removed stale NEWS.Debian file.
+  * Converted patches to dpatch format.
+  * debian/control: Added a dependency on dpatch to accommodate the change in
+    my patching practice for this package.
+  * debian/rules: Changed rules from an ad-hoc patch system to dpatch.
+  * debian/scribus.dirs: Added this file instead of using "mkdir" rules in the
+    rules file.
+  * debian/rules: Stop using "mkdir" rules in favor of using a scribus.dirs
+    file.
+  * debian/scribus.install: Added this file instead of manually installing
+    necessary files from within debian/rules.
+  * debian/rules: Removed file installation rules made obsolete by the
+    debian/scribus.install file.
+  * debian/rules: Fix the linda overrides file name in rules to be scribus-cvs.
+  * scribus.lintian: remove this stale experimental file.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 17 Nov 2005 14:48:57 -0700
+
+scribus-cvs (1.3.1+cvs20051108-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-11-08.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue,  8 Nov 2005 09:53:14 -0700
+
+scribus-cvs (1.3.1+cvs20051028-1) unstable; urgency=low
+
+  * New upstream release. It fixes the jpeg export problem.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 28 Oct 2005 14:01:38 -0600
+
+scribus-cvs (1.3.1+cvs20051025-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-10-25.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 25 Oct 2005 15:24:45 -0600
+
+scribus-cvs (1.3.1+cvs20051011-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-10-11.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 21 Oct 2005 15:40:00 -0600
+
+scribus-cvs (1.3.1+cvs20051003-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-10-03.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue,  4 Oct 2005 10:07:04 -0600
+
+scribus-cvs (1.3.0+cvs20050929-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-09-29.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 30 Sep 2005 11:38:05 -0600
+
+scribus-cvs (1.3.0+cvs20050919-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-09-18.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 20 Sep 2005 15:20:15 -0600
+
+scribus-cvs (1.3.0+cvs20050918-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-09-18.
+  * debian/rules: Add the "make -f Makefile.cvs" rule again or today's build
+    will break.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 19 Sep 2005 15:33:19 -0600
+
+scribus-cvs (1.3.0+cvs20050905-3) unstable; urgency=low
+
+  * Test #2525 with a preview of fixed qt3 packages:
+      + Remove the mspinbox.cpp patch.
+      + debian/rules: Comment out the --enable-debug part.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed,  7 Sep 2005 08:52:13 -0600
+
+scribus-cvs (1.3.0+cvs20050905-2) unstable; urgency=low
+
+  * Add a patch to scribus/mspinbox.cpp to provide debugging statements (see
+    bug #2525 on bugs.scribus.net).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue,  6 Sep 2005 16:41:22 -0600
+
+scribus-cvs (1.3.0+cvs20050905-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-09-05. Enable debug for troubleshooting
+    purposes.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue,  6 Sep 2005 13:35:35 -0600
+
+scribus-cvs (1.3.0+cvs20050831-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-08-31.
+  * debian/rules: Do not chmod 755 /usr/local/lib/scribus/libs/*.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu,  1 Sep 2005 08:15:19 -0600
+
+scribus-cvs (1.3.0+cvs20050828-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-08-28.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 29 Aug 2005 10:09:01 -0600
+
+scribus-cvs (1.3.0+cvs20050727-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-07-27.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 27 Jul 2005 23:13:53 -0600
+
+scribus-cvs (1.3.0+cvs20050724-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-07-24.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun, 24 Jul 2005 12:58:43 -0600
+
+scribus-cvs (1.3.0+cvs20050720-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-07-20.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 21 Jul 2005 13:59:02 -0600
+
+scribus-cvs (1.3+cvs20050711-1) unstable; urgency=low
+
+  * Upstream cvs update on 2005-07-11.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 12 Jul 2005 14:05:44 -0600
+
+scribus-cvs (1.3+cvs20050702-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-07-02.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun,  3 Jul 2005 20:24:01 -0600
+
+scribus-cvs (1.3+cvs20050629-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-06-29.
+  * debian/control: Updated Depends and description to the changes in 1.2
+    control file.
+  * debian/control: Explicitly depend on gcc 3.3.5 as the libgcc1 4.0.0
+    problem persists.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 30 Jun 2005 10:58:58 -0600
+
+scribus-cvs (1.3+cvs20050625-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-06-25.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun, 26 Jun 2005 14:31:54 -0600
+
+scribus-cvs (1.3+cvs20050620-3) unstable; urgency=low
+
+  * CVS update. Sig #11 crash bug related to libfreetype6-2.1.10 fixed.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 20 Jun 2005 17:09:29 -0600
+
+scribus-cvs (1.3+cvs20050620-2) unstable; urgency=low
+
+  * Added debugging statements to the Type1 font loading code.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 20 Jun 2005 15:20:17 -0600
+
+scribus-cvs (1.3+cvs20050620-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-06-20.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 20 Jun 2005 14:25:21 -0600
+
+scribus-cvs (1.3+cvs20050618-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-06-18. Built against libfreetype6-2.1.10,
+    which is in unstable now.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 20 Jun 2005 13:16:53 -0600
+
+scribus-cvs (1.3+cvs20050608-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-06-08. First build against
+    libfreetype6-2.1.9.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 10 Jun 2005 10:52:47 -0600
+
+scribus-cvs (1.3+cvs20050605-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-06-05. Hard space can be entered in the
+    Story Editor (Closes: #297160).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon,  6 Jun 2005 13:37:54 -0600
+
+scribus-cvs (1.3+cvs20050529-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-05-29.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 31 May 2005 16:44:12 -0600
+
+scribus-cvs (1.3+cvs20050522-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-05-22.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun, 22 May 2005 16:34:28 -0600
+
+scribus-cvs (1.3+cvs20050510-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-05-10.
+  * debian/rules: remove the erroneous /usr/share/doc/scribus directory that
+    conflicted with the stable scribus package.
+  * debian/rules: Install lintian overrides properly
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 12 May 2005 11:22:32 -0600
+
+scribus-cvs (1.3+cvs20050419-1) unstable; urgency=low
+
+  * Package the new upstream cvs release on 2005-04-19 in honor of Craig
+    Ringer tackling bug #1362.
+  * Changed the names of files in debian directory to scribus-cvs to get
+    overrides and icons working.
+  * debian/rules: Remove the "make -f Makefile.cvs" run - not needed anymore.
+  * debian/rules: Change scribus to scribus-cvs in file names.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 20 Apr 2005 09:57:01 -0600
+
+scribus-cvs (1.3+cvs20050412-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-04-05 - Tsoots Edition (TM).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 12 Apr 2005 18:54:01 -0600
+
+scribus-cvs (1.3+cvs20050405-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-04-05.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu,  7 Apr 2005 09:55:25 -0600
+
+scribus-cvs (1.3+cvs20050401-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-03-31.
+  * 3 Important fixes made their way into cvs in the last few minutes, so I'm
+    rebuilding the package.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri,  1 Apr 2005 14:15:23 -0700
+
+scribus-cvs (1.3+cvs20050331-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-03-31.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri,  1 Apr 2005 13:03:55 -0700
+
+scribus-cvs (1.3+cvs20050322-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-03-22.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 23 Mar 2005 10:13:41 -0700
+
+scribus-cvs (1.3+cvs20050303-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-02-07.
+  * This tree is branched to build experimental 1.3cvs packages. There will be
+    no connection to the main scribus package tree.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu,  3 Mar 2005 17:13:39 -0700
+
+scribus (1.2.1+cvs20050207-1) unstable; urgency=low
+
+  * New upstream cvs release on 2005-02-07.
+  * debian/scribus.lintian: Added overrides for short-words libs.
+  * debian/rules: Added a rule to make scribus-short-words.rc non-executable.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon,  7 Feb 2005 15:55:26 -0700
+
+scribus (1.2.1-1) unstable; urgency=low
+
+  * New upstream release on 2005-01-08 (Closes: #289761).
+  * debian/control:
+    - Removed scribus-template package section as it is built
+      from its own upstream source package now.
+    - Added "scribus-template (<1.2.1)" to "Replaces" to resolve a
+      conflict in template packaging.
+  * debian/rules:
+    - Removed scribus-template related commands from the binary-indep
+      section.
+    - Added a rule to run "make -f Makefile.cvs" to regenerate makefiles after
+      patching "scribus/Makefile.am" and "scribus/Makefile.in" in
+      order to prevent build failure due to the missing doc directory
+      contents.
+    - Added a rule to remove an upstream COPYING file from
+      /usr/share/scribus/scripts/ that contained the text of GPL version 2
+      license.
+  * debian/copyright: updated cvs, author, and contributor information.
+  * Applied a patch that removes erroneous #ifdef directives that prevented
+    scribus from honoring locale environmental variables (Closes: #287929).
+  * debian/scribus.lintian: updated lintian overrides.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 13 Jan 2005 14:33:15 -0700
+
+scribus (1.2.0.final+cvs20041227-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-12-27.
+  * debian/scribus.lintian: Added overrides for non-executable sample python
+    scripts.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 28 Dec 2004 11:46:08 -0700
+
+scribus (1.2.0.final+cvs20041226-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-12-26.
+  * debian/control: Added a "Replaces" in the scribus-template section.
+  * debian: Removed experimental debian directory versions accidentally left
+    in there.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 27 Dec 2004 17:43:17 -0700
+
+scribus (1.2.0.final+cvs20041209-2) unstable; urgency=low
+
+  * Initial release of the scribus-template package. The scribus-templates
+    package has been split out of the main scribus package to conserve
+    bandwidth and space as it is not expected to change as often as the main
+    program. The split is done at this time to coincide with the split of the
+    scribus-doc package.
+  * debian/scribus.1: Removed the manpage as upstream has produced its own
+    manpage.
+  * debian/scribus-template.changelog: A separate changelog is not necessary
+    as both scribus and scribus-template are build from the same source.
+  * debian/rules: Comment DH_VERBOSE out by default.
+  * debian/rules: Remove the manpage installation rule.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 15 Dec 2004 23:16:32 -0700
+
+scribus (1.2.0.final+cvs20041209-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-12-08.
+  * debian/scribus.1: Updated the manpage.
+  * debian/control: Removed the superfluous entry for the scribus-doc.
+  * debian/NEWS.Debian: Fix date info to reflect the changelog correctly.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 10 Dec 2004 13:21:23 -0700
+
+scribus (1.2.0.final+cvs20041208-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-12-08.
+  * debian/scribus.xml: Corrected the spec URI (Closes: #283726).
+  * Docs formatted for the help browser are finally available. They have been
+    split out into a non-free scribus-doc package (Closes: #283826).
+  * debian/rules: Added rules for the scribus-template package.
+  * debian/control: Added scribus-template package.
+  * debian/scribus.lintian: Added an override for the new OODraw plugin.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 09 Dec 2004 21:44:51 -0700
+
+scribus (1.2.0.final+cvs20041026-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-10-26.
+  * debian/scribus.desktop: Fixed the mime entries and updated other values
+    (Closes: #278121).
+  * debian/scribus.menu: Updated the hint.
+  * debian/rules: Use dh_desktop to run update-desktop-database after installing
+    the scribus.desktop file.
+  * debian/scribus.xml: New file. Register scribus file extensions in the mime
+    database.
+  * debian/control: Updated debhelper version to make sure that dh_desktop is
+    available.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 28 Oct 2004 12:12:35 -0600
+
+scribus (1.2.0.final+cvs20041004-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-10-04.
+  * README.Debian: Added a note on making fonts available if the XFree or a
+    font server does not provide proper font information (Closes: #274143).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 05 Oct 2004 21:32:16 -0500
+
+scribus (1.2.0.final+cvs20040929-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-09-29.
+  * debian/scribus.lintian: Updated lintian overrides for the text importer.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 29 Sep 2004 14:20:55 -0500
+
+scribus (1.2.0.final+cvs20040921-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-09-21.
+  * debian/scribus.lintian: Updated lintian overrides for the html import
+    plugin.
+  * debian/control: Added a build dependency on libxml2-dev (>= 2.6.11) as
+    required for the new OpenOffice importer plug-in.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 21 Sep 2004 15:00:07 -0500
+
+scribus (1.2.0.final+cvs20040911-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-09-11.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun, 12 Sep 2004 23:41:36 -0500
+
+scribus (1.2.0.final+cvs20040829-1) unstable; urgency=high
+
+  * debian/control: fix a packaging error. Permissions on the text import
+    plugin libraries must be 755 for the plugin to work and to avoid a sig 11
+    scribus crash.
+  * Applied a number of post-release patches from upstream that fix the
+    following bugs:
+    * bug     # 869: oriantation setting wrong displayed
+    * bug     #1009: SuSE Patches for scribus
+    * bug     #1011: Serious problems with pasting copied content from
+      some applications.
+    * feature #1010: Update of russian translation. many fixes
+    * feature #1013: middle mouse button refreshes screen when you use it
+      to paste text
+    * feature #1017: Norwegian Bokmaal Translation for 1.2
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 31 Aug 2004 22:39:23 -0500
+
+scribus (1.2.0.final-1) unstable; urgency=high
+
+  * Final 1.2 release on 2004-08-25, urgency=high to get it into Sarge.
+  * debian/scribus.linda: Fixed the linda override to stop pointing out that
+    scribus Build-Depends on autoconf and automake1.7.
+  * debian/control: Removed version from build-depends for libcupsys2-dev
+  * Splash screen does not block the Scrapbook startup font replacement dialog
+    anymore (Closes: #265750).
+  * debian/copyright: Updated contributor information.
+  * debian/rules: Remove obsolete configure --with-qt-dir option
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 25 Aug 2004 19:19:55 -0500
+
+scribus (1.2.0.cvs20040714-2) unstable; urgency=medium
+
+  * Recompile with libtiff4
+  * Urgency medium since no other changes
+  * Add me to Uploaders for this one upload. Normally I'm only
+    sponsoring the package.
+
+ -- Frank Lichtenheld <djpig@debian.org>  Wed, 28 Jul 2004 02:06:33 +0200
+
+scribus (1.2.0.cvs20040714-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-07-13. Fixes bugs related to paste
+    problem and unability to copy from Properties/Geometry if object is
+    locked.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 14 Jul 2004 19:41:15 -0500
+
+scribus (1.2.0.cvs20040713-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-07-13. (Closes: #258969).
+  * debian/README.Debian: Removed the info on the sawfish and friends palette
+    window ghosting workaround as the bug was fixed.
+  * debian/scribus.lintian: Updated lintian overrides.
+  * debian/scribus.lintian: updated the overrides to remove inapplicable
+    warnings.
+  * debian/control: Changed Standards-Version to 3.6.1
+  * debian/control: changed "Depends" on gs to gs-gpl to reflect the package
+    name change.
+  * Removed the patch for big-endian system image colors for art_kmisc.c as it
+    was applied upstream. (Closes: #251080).
+  * debian/control: Changed the program description to clarify import/export
+    capabilities and made the entire description more concise.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 13 Jul 2004 20:55:14 -0500
+
+scribus (1.2.0.cvs20040526-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-05-26
+  * debian/control: Changed Build-Depends of libcupsys2-dev to version
+    (>=1.1.20final+cvs20040330-4) for migration to libcupsys2-gnutls10
+    (Closes: #251109, #251361).
+  * debian/README.Debian: Added a note about workarounds for PostScript2
+    printers that don't understand Scribus's PS3 output (Closes: #251498).
+  * debian/README.Debian: Removed an old note on CUPS and SSL support as the
+    libcupsys2-gnutls10 / libcupsys2-dev provide SSL support now.
+  * Applied a patch that might resolve #251080. Testing on appropriate arches
+    is requested before the bug can be resolved or more work on this issue
+    considered.
+  * debian/control: Changed Build-Depends from libjpeg-dev libjpeg62-dev to
+    and libz-dev to zlib1g-dev to reflect the package changes.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 28 May 2004 17:46:58 -0500
+
+scribus (1.2.0.cvs20040514-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-05-14
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 14 May 2004 20:55:29 -0500
+
+scribus (1.2.0.cvs20040512-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-05-12
+  * debian/scribus.1: Updated the man page: Fixed a typo; updated and sorted
+    alphabetically the list of available languages; update the list of
+    environmental variables used for language selection.
+  * Scribus now makes use of LC_ALL>LC_MESSAGES>LANG variables if the
+    -lang xx command line option is not used (Closes: #201797).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 13 May 2004 00:19:00 -0500
+
+scribus (1.2.0.cvs20040510-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-05-10
+  * debian/control: Added "python-tk" to the "Depends" to make the FontSampler
+    script work out of the box (Closes: #248032).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 11 May 2004 16:59:08 -0500
+
+scribus (1.2.0.cvs20040506-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-05-06
+  * debian/control: reverted the build-dep patch from Apr 27 as the new
+    lintian version requires Build-Depends to be on one line.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri,  7 May 2004 14:49:44 -0500
+
+scribus (1.2.0.cvs20040503-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-05-03
+  * debian/control: Added "Replaces:" the old scribus-doc-xx packages from
+    woody to facilitate upgrading (Closes: #247149).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun, 02 May 2004 18:43:05 -0500
+
+scribus (1.2.0.cvs20040429-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-04-29
+  * debian/scribus.linda: Fixed the first regexp and added the proper tag for
+    automake* override. Linda is beautiful _and_ silent now, as should be.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 29 Apr 2004 20:55:51 -0500
+
+scribus (1.2.0.cvs20040428-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-04-28
+  * debian/README.Debian: Reformatted it and added headlines for readability.
+  * debian/scribus.linda: New release of linda started issuing warnings
+    similar to those of lintian, so an overrides file was made to account for
+    the necessary deviations from the debian requirements.
+  * debian/scribus.lintian: Renamed the file from lintian-overrides in order
+    to use a consistent mechanism for installation of overrides for linda and
+    lintian
+  * debian/rules: Changed the way lintian and linda overrides are installed
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 28 Apr 2004 12:49:52 -0500
+
+scribus (1.2.0.cvs20040427-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-04-27.
+  * debian/control: Apply a patch by Nicolas Boos to wrap the build-depends
+    lines for easier reading.
+  * debian/README.debian: Added a note on cups and ssl and expanded the
+    explanation of the palette window ghosting qt/sawfish problem.
+  * debian/scribus-debian.xpm: Renamed to scribus.xpm
+  * debian/scribus-debian-3d.xpm: Renamed to scribus-3d.xpm
+  * debian/scribus.desktop: Fixed/changed the location of the icon file.
+  * debian/scribus.menu: Changed the location of the icon file.
+  * debian/rules: Changed the name of the icon file.
+  * debian/rules: Changed how the
+    $(DEBIAN_DIR)/$(package)/usr/share/applications is created to install -d
+    from makedir.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 26 Apr 2004 22:20:28 -0500
+
+scribus (1.2.0.cvs20040406-2) unstable; urgency=low
+
+  * New upstream cvs release on 2004-04-07.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 07 Apr 2004 18:02:42 -0500
+
+scribus (1.2.0.cvs20040406-2) unstable; urgency=low
+
+  * debian/control: Change the dependency on gs-aladdin to gs-afpl that
+    supersedes it (Closes: #242534).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 07 Apr 2004 10:04:03 -0500
+
+scribus (1.2.0.cvs20040406-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-04-06.
+  * debian/rules: Removed commands to move icons to the FHS location as the
+    issue has been fixed upstream.
+  * patches/00-util.cpp.patch: removed patch as the issue has been fixed
+    upstream. See the changelog entry above.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 06 Apr 2004 17:12:55 -0500
+
+scribus (1.2.0.cvs20040329-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-03-29.
+  * debian/scribus.1: Amended the man page to include en_GB lang.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 30 Mar 2004 11:49:55 -0500
+
+scribus (1.2.0.cvs20040317-2) unstable; urgency=low
+
+  * debian/control: Removed "Conflicts:" and "Replaces:" scribuscvs as there
+    should be no old unofficial scribuscvs packages left in the wild by now.
+  * debian/README.Debian: Added a note about the Tools windows ghosting
+    workaround for the sawfish bug.
+  * debian/README.Debian: Added a note about installing "Recommends" to
+    prevent Scribus from not starting due to the absence of GhostScript fonts
+    (Closes: #238658).
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 18 Mar 2004 10:47:05 -0500
+
+scribus (1.2.0.cvs20040317-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-03-17.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 18 Mar 2004 10:47:05 -0500
+
+scribus (1.2.0.cvs20040316-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-03-14.
+  * Added the Option to delete all Objects on a Layer, when deleting this
+    Layer (Closes: #208473).
+  * Updated the man page with changes made by Frank Lichtenheld
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 16 Mar 2004 16:03:30 -0500
+
+scribus (1.2.0.cvs20040301-1) unstable; urgency=low
+
+  * debian/rules: Removed the "else condition" in checking for
+    DEB_BUILD_OPTIONS to use the CFLAGS setting inherited from
+    DEB_HOST_GNU_TYPE.
+  * debian/rules: Removed a check for DEB_BUILD_OPTIONS="nostrip" as
+    "dh_strip" will correctly handle the situation if this environmental
+    variable is present.
+  * debian/scribus.links: Added a link for sample python scripts from
+    /usr/share/scribus/samples to /usr/share/doc/scribus/examples.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon,  1 Mar 2004 22:26:34 -0500
+
+scribus (1.2.0.cvs20040228-2) unstable; urgency=low
+
+  * debian/rules: revert back to installing scribus-debian.xpm for menu icon
+    as some of the more lightweight window managers have a problem with .png
+  * debian/scribus.menu: Use scribus-debian.xpm as a menu icon
+  * debian/scribus.desktop: Use scribus-debian.xpm as a menu icon
+  * debian/lintian-overrides: remove the .png icon warning override
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sun, 29 Feb 2004 17:30:08 -0500
+
+scribus (1.2.0.cvs20040228-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-02-27.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sat, 28 Feb 2004 22:39:26 -0500
+
+scribus (1.2.0.cvs20040225-2) unstable; urgency=low
+
+  * debian/rules: install distribution changelog and cvs changelog separately.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 27 Feb 2004 10:15:56 -0500
+
+scribus (1.2.0.cvs20040225-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-02-25.
+  * debian/scribus.desktop: Fixed mime-type problem.
+  * debian/rules: Use scribus.png as the menu icon instead of scribus-debian.xpm.
+  * debian/scribus.menu: Use scribus.png as the menu icon.
+  * debian/rules: Use DEB_HOST_GNU_TYPE compile flag selection again.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Thu, 26 Feb 2004 13:06:26 -0500
+
+scribus (1.2.0.cvs20040224-2) unstable; urgency=low
+
+  * Added "-g -Wall" CFLAGS flags per Debian Policy 10.1
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Wed, 25 Feb 2004 09:37:03 -0500
+
+scribus (1.2.0.cvs20040224-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-02-24.
+  * debian/scribus.links. Changed the /usr/share/doc/scribus/en symlink to
+    point to the new location of Scripter docs in /usr/share/scribus/doc/en/
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 24 Feb 2004 18:25:40 -0500
+
+scribus (1.2.0.cvs20040223-2) unstable; urgency=low
+
+  * Added lintian-overrides as the library permissions must be 755 per
+    upstream policy.
+  * debian/rules:
+    + install:
+      - Added rules to install the lintian overrides file.
+    + make variables:
+      - Added support for DEB_BUILD_OPTIONS (noopt and nostrip). Done with
+        help from jello (Joe Nahmias) and beta3 from #debian-mentors.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Tue, 24 Feb 2004 12:40:04 -0500
+
+scribus (1.2.0.cvs20040223-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-02-23.
+  * README.Debian: Made a note about the freetype being the source of the bug
+    in font outline handling.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Mon, 23 Feb 2004 20:20:52 -0500
+
+scribus (1.2.0.cvs20040221-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-02-21.
+  * scribus.uk.ts and scribus.uk.qm: Updated Ukrainian translation.
+  * /usr/share/doc/scribus/changelog.gz. Combined release and cvs changelogs.
+  * Added debian/README.Debian to note font outline issues.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Sat, 21 Feb 2004 14:11:04 -0500
+
+scribus (1.2.0.cvs20040219-1) unstable; urgency=low
+
+  * New upstream cvs release on 2004-02-19 (Closes: #217683).
+  * Fixed a typo in scribus/Makefile that prevented "make dist" from upstream
+    cvs sources.
+  * File->New if dir set in path->icc profiles crash was fixed upstream
+    (Closes: #226113).
+  * User defined styles can now be applied from the Properties Palette, or
+    from within the Story Editor (Closes: #201801).
+  * Corner radius setting now honors the default units (Closes: #202952).
+  * Page menu is now accessible while editing a template (Closes: #202476).
+  * Inserting text into a frame in a reopened .scd file crash has been fixed
+    upstrem (Closes: #219214).
+  * Default button in the Edit->Paragraph Styles... is "OK" (Closes: #202481).
+  * Scribus uses fonts provided by Defoma now (Closes: #216829).
+  * Added debian/debian.desktop for Gnome menu (Closes: #226348).
+  * Added debian/scribus.doc-base for inclusion into doc-base per
+    recommendation of Frank Lichtenheld
+  * Added debian/scribus.links for proper creation of a link from
+    /usr/lib/scribus/doc/en/ to /usr/share/doc/scribus/en during the build.
+  * debian/rules: use ./configure --with-qt-dir as a more general way to
+    include qt3 headers per recommendation of Chris Cheney on #debian-kde.
+  * debian/scribus.menu: changed needs=X11 -> needs="X11" per recommendation
+    of Frank Lichtenheld <djpig@debian.org>.
+  * debian/rules: deleted commented lines to make file more readable per
+    recommendation of Frank Lichtenheld.
+  * debian/control:
+    + Build-depends:
+      -  gcc (>=3.2.0) instead of c++-compiler per upstream recommendation.
+      -  added libfreetype6-dev (>= 3.1.3) per upstream recommendation.
+      -  added autoconf (>=2.57) per upstream recommendation.
+      -  added automake1.7 (>=1.7) per upstream recommendation.
+    + Depends:
+      -  gs (>= 7.07) instead of 5.50 per upstream recommendation.
+      -  gs-aladdin (>= 7.04) instead of 5.50 per upstream recommendation.
+      -  gs-esp (>= 7.07) instead of 7.05 per upstream recommendation.
+  * debian/scribus.1: Rewrote the manpage. More works needs to be done, yet.
+  * debian/copyright: Added instructions on CVS checkout. Updated copyright
+    date from -2003 to -2004. Added translators.
+
+ -- Oleksandr Moskalenko <malex@tagancha.org>  Fri, 20 Feb 2004 13:49:27 -0500
+
+scribus (1.1.4-2) unstable; urgency=low
+
+  * Orphanage upload.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Thu, 15 Jan 2004 23:15:05 -0500
+
+scribus (1.1.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control: Build-depends on python2.3-dev instead of
+    python2.2-dev.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sat,  3 Jan 2004 02:55:10 -0500
+
+scribus (1.1.2-2) unstable; urgency=low
+
+  * debian/control: Build-depends on libcups2-dev.
+  * scribus/scribus.cpp: fixed a bug preventing colour management.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue, 18 Nov 2003 21:10:40 -0500
+
+scribus (1.1.2-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #212334)
+  * debian/control: don't suggest any doc package since they are now
+    separated from the upstream source. (Closes: #217327)
+  * Autosave seems to now work properly. (Closes: #217475)
+  * Plugins are correctly detected now (patch #02). (Closes: #205441)
+  * Importing images works fine now. (Closes: #217462)
+  * Copy/Pasting images works fine now. (Closes: #202640)
+  * This error should not occur anymore. (Closes: #203140)
+  * Templates are now appliable onto ranges of pages. (Closes: #202478)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Mon, 17 Nov 2003 00:57:43 -0500
+
+scribus (1.0.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue, 30 Sep 2003 21:04:04 -0400
+
+scribus (1.0-1) unstable; urgency=low
+
+  * debian/patches subdirectory created. It contains all the patches that
+    are applied on the main source tree.
+  * Override NMU. (Closes: #201770).
+  * scribus-doc-en is back again. Documentation removed from the main
+    package.
+  * Manpage written.
+  * debian/control: Standards-version set to 3.6.0.
+  * debian/copyright: updated copyright information.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 30 Jul 2003 14:48:31 -0400
+
+scribus (1.0-0.1) unstable; urgency=low
+
+  * NMU
+  * New upstream release (Closes: #201770).
+
+ -- Yann Dirson <dirson@debian.org>  Tue, 22 Jul 2003 23:16:49 +0200
+
+scribus (0.9.10-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun,  1 Jun 2003 13:38:56 -0400
+
+scribus (0.9.9-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Fri, 25 Apr 2003 13:37:30 -0400
+
+scribus (0.9.6-2) unstable; urgency=low
+
+  * Use the new QT 3 header layout. (Closes: #181662)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 26 Feb 2003 22:17:59 -0500
+
+scribus (0.9.6-1) unstable; urgency=low
+
+  * New upstream release.
+  * Depends on gs-esp as well as every other declinations of gs that I could
+    think of. (Closes: #171566)
+  * Rebuild againt new package of libqt3. (Closes: #180064)
+  * Depends explicitly on version 3 of debhelper.
+  * Only "Recommends" (instead of "Depends") on xfonts-scalable.
+  * Menu icon resize to 32px32p and adapted to the more limited cmap.xpm
+    palette.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun, 16 Feb 2003 10:56:46 -0500
+
+scribus (0.9.2-1) unstable; urgency=low
+
+  * New upstream release.
+  * Scribus should not crash when loading files with unknown fonts. See
+    upstream ChangeLog. (Closes: #152577)
+  * I can't but give a try from time to time since this bug really applies
+    to libqt. (Closes: #158051)
+  * char signedness problem on alpha 64 should be fixed with this release.
+    (Closes: #162755)
+  * No answer, problem fixed? (Closes: #162947)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sat, 16 Nov 2002 17:38:45 -0500
+
+scribus (0.9.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun, 10 Nov 2002 11:42:47 -0500
+
+scribus (0.8-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sat, 28 Sep 2002 15:40:55 -0400
+
+scribus (0.7.8-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #152170, #156629)
+  * Should be fixed with this release. (Closes: #158051)
+  * Build-depend on liblcms1-dev (>= 1.09).
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun, 15 Sep 2002 13:43:47 -0400
+
+scribus (0.7.5-2.2) unstable; urgency=low
+
+  * NMU
+  * Fix libpng-dev --> libpng3-dev.  Sigh.
+
+ -- LaMont Jones <lamont@debian.org>  Mon, 19 Aug 2002 22:01:01 -0600
+
+scribus (0.7.5-2.1) unstable; urgency=low
+
+  * NMU
+  * Fix build-depends.  Closes: #152170
+
+ -- LaMont Jones <lamont@debian.org>  Fri, 16 Aug 2002 16:34:55 -0600
+
+scribus (0.7.5-2) unstable; urgency=low
+
+  * Build-depends on liblcms1-dev instead of liblcms-dev. (Closes: #151216)
+  * Use the updated menu icon for scribus.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sat, 29 Jun 2002 04:23:24 -0400
+
+scribus (0.7.5-1) unstable; urgency=low
+
+  * New Upstream Release. (Closes: #147328, #148148, #149910, #141299)
+  * Bug fixed in the meantime. (Closes: #124474)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 26 Jun 2002 19:02:43 -0400
+
+scribus (0.6-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * Make it compile on Alpha for real.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun, 14 Apr 2002 20:05:56 -0400
+
+scribus (0.5.8-1) unstable; urgency=low
+
+  * New Upstream Release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Mon,  1 Apr 2002 19:32:46 -0500
+
+scribus (0.5.6-2) unstable; urgency=low
+
+  * Build-depends on libpng2-dev instead og libpng-dev. (Closes: #138706)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Mon, 18 Mar 2002 13:49:06 -0500
+
+scribus (0.5.6-1) unstable; urgency=low
+
+  * New Upstream Release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue, 12 Mar 2002 18:12:10 -0500
+
+scribus (0.5.5-1) unstable; urgency=low
+
+  * New Upstream Release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Mon, 18 Feb 2002 01:29:27 -0500
+
+scribus (0.5.4-3) unstable; urgency=low
+
+  * Enable lcms in debian/rules for alpha too after fixing #132420.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue,  5 Feb 2002 15:52:05 -0500
+
+scribus (0.5.4-2) unstable; urgency=low
+
+  * Updated admin/config.sub and admin/config.guess from
+    ftp://ftp.gnu.org/pub/gnu/config/. #120103 got unfixed during the
+    last update. (Closes: #132412)
+  * Added libtiff3g-dev as build dependency. (Closes: #132413)
+  * Help scribus build on Alpha (in debian/rules). (Closes: #132420)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue,  5 Feb 2002 02:13:17 -0500
+
+scribus (0.5.4-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * Removed scribus/usr/include in debian/rules.
+  * Added LIBS="-lm" before the configure command in debian/rules so that
+    libcms get detected correctly. Added -I/usr/include/lcms to CFLAGS.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Mon,  4 Feb 2002 00:03:26 -0500
+
+scribus (0.5.3-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * added liblcms-dev as build dependency in debian/control.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue, 22 Jan 2002 15:25:50 -0500
+
+scribus (0.5-2) unstable; urgency=low
+
+  * Fix spelling error in package description. (Closes: #125343)
+  * Modified description to point out the french documentation package.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Tue, 18 Dec 2001 11:21:04 -0500
+
+scribus (0.5-1) unstable; urgency=low
+
+  * New Upstream Release.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun, 16 Dec 2001 15:55:30 -0500
+
+scribus (0.4.10-2) unstable; urgency=low
+
+  * Fix a problem when exporting document to a PDF filename containing
+    spaces...
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sat,  1 Dec 2001 23:26:00 -0500
+
+scribus (0.4.10-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * Updated admin/config.sub and admin/config.guess from
+    ftp://ftp.gnu.org/pub/gnu/config/ (Closes: #120103)
+  * scribus: suggests scribus-doc-fr too.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 28 Nov 2001 01:23:45 -0500
+
+scribus (0.4.9-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * New documentation package: scribus-doc-fr.
+  * Moved from section 'editors' to section 'graphics' (dito in
+    debian/scribus.menu).
+
+ -- Wolfgang Sourdeau <was@debian.org>  Sun, 18 Nov 2001 15:59:24 -0500
+
+scribus (0.4.8-3) unstable; urgency=low
+
+  * Depends on either gs or gs-aladdin in debian/control (Closes: #119828)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Fri, 16 Nov 2001 16:50:41 -0500
+
+scribus (0.4.8-2) unstable; urgency=low
+
+  * Applied patch to fix a segfault occurring when scrolling the
+    mouse-wheel on an empty view.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 14 Nov 2001 23:09:55 -0500
+
+scribus (0.4.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Depends on gs (>= 5.50), gsfonts-x11 | xfonts-scalable.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 14 Nov 2001 22:08:17 -0500
+
+scribus (0.4.7-2) unstable; urgency=low
+
+  * Uncapitalize nouns in the package descriptions. (Closes: #118409)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Thu,  8 Nov 2001 02:29:16 -0500
+
+scribus (0.4.7-1) unstable; urgency=low
+
+  * New Upstream Release.
+  * The initial released closed a wrong bug number. (Closes: #117839)
+  * Documentation packages put in the doc section.
+  * Merged some interesting things from Nicolas Boos's original debian subdirectory.
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed,  7 Nov 2001 00:05:24 -0500
+
+scribus (0.4.6-1) unstable; urgency=low
+
+  * Initial release. (closes: #117793)
+
+ -- Wolfgang Sourdeau <was@debian.org>  Wed, 31 Oct 2001 18:25:15 -0500

@@ -1,4 +1,88 @@
 #!/usr/bin/make -f
 
+export DH_VERBOSE = 1
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+CFLAGS += -D_LARGEFILE64_SOURCE=1 -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
+CXXFLAGS += -D_LARGEFILE64_SOURCE=1 -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
+
+t :=
+p := scribus$t
+export p
+
+ifneq (,$t)
+extraconf := \
+	-DWANT_DEBUG:BOOL=1 \
+	-DWANT_VERSIONING:BOOL=1 \
+	-DCUSTOM_VERSIONTAG=$t
+else
+extraconf :=
+endif
+
 %:
-	dh $@
+	dh $@ --buildsystem cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	    -DWANT_CPP17=ON \
+	    -DWANT_HUNSPELL=1 \
+	    -DWANT_GRAPHICSMAGICK:BOOL=1 \
+	    -DWANT_DISTROBUILD:BOOL=1 \
+	    -DWANT_NORPATH:BOOL=1 \
+	    -DCMAKE_SKIP_RPATH:BOOL=1 \
+	    $(extraconf)
+
+override_dh_auto_install:
+	dh_auto_install
+ifneq (,$(findstring doc, $(shell grep -e '^Package: ' debian/control)))
+	# move the docs somewhere else, so that I can then pick them up
+	# do it only if we are building the -doc package from the same source.
+	# This won't be the case for the official Debian package, as the
+	# documentation is non-free and in a separate source package.
+	mkdir -p $(CURDIR)/debian/tmp/doc
+	mv -v $(CURDIR)/debian/tmp/usr/share/doc/$p/en \
+	      $(CURDIR)/debian/tmp/usr/share/doc/$p/de \
+	      $(CURDIR)/debian/tmp/usr/share/doc/$p/it \
+	      $(CURDIR)/debian/tmp/usr/share/doc/$p/ru \
+	      $(CURDIR)/debian/tmp/doc
+endif
+	# remove pointless files.
+	rm -v $(CURDIR)/debian/tmp/usr/share/doc/$p/ChangeLog \
+	      $(CURDIR)/debian/tmp/usr/share/doc/$p/COPYING
+	find $(CURDIR)/debian/tmp -type d -empty -print -delete
+	# remove references to prorietary fonts and use free fonts in templates.
+	# also remove references to Bitstream fonts, which are unmaintained, and
+	# use DejaVu ones, instead
+	# See https://bugs.debian.org/742003 and https://launchpad.net/bugs/1393349
+	# https://bugs.scribus.net/view.php?id=14688
+	# https://bugs.scribus.net/view.php?id=14689
+	gunzip -v $(CURDIR)/debian/tmp/usr/share/$p/templates/*/*.sla.gz
+	sed -i $(CURDIR)/debian/tmp/usr/share/$p/templates/*/*.sla \
+		-e 's/Arial Regular/Liberation Sans Regular/g' \
+		-e 's/Arial Black Regular/Liberation Sans Bold/g' \
+		-e 's/FreeSans Medium/Liberation Sans Bold/g' \
+		-e 's/Bitstream Vera Sans Roman/DejaVu Sans Book/g' \
+		-e 's/Bitstream Vera Sans Mono Roman/DejaVu Sans Mono Book/g' \
+		-e 's/Bitstream Vera Serif Roman/DejaVu Serif Book/g' \
+		-e 's/Bitstream Vera Serif/DejaVu Serif/g' \
+		-e 's/Bitstream Vera Sans/DejaVu Sans/g' \
+		-e 's/Bitstream Vera Mono/DejaVu Mono/g'
+	gzip -v -n -8 $(CURDIR)/debian/tmp/usr/share/$p/templates/*/*.sla
+
+override_dh_fixperms:
+	# the plugins (which are the only .so files here) needs to be +x.
+	# let the scribus installer take care of them
+	dh_fixperms -X .so
+
+override_dh_python3:
+	dh_python3 /usr/share/$p/samples/
+	dh_python3 /usr/share/$p/scripts/
+
+# scribus expects the {docdir}/{lang}/menu.xml being present and uncompressed,
+# otherwise you'll get no docs.
+override_dh_compress:
+	dh_compress -X usr/share/doc/$p/de \
+				-X usr/share/doc/$p/en \
+				-X usr/share/doc/$p/it \
+				-X usr/share/doc/$p/ru \
+				-X usr/share/doc/$p/TRANSLATION \

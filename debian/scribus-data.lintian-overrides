@@ -1,0 +1,15 @@
+# these shebang are not used by anything, as scribus loads the scripts
+# by itself, it doesn't execute them
+unusual-interpreter python [usr/share/scribus/samples/*.py]
+unusual-interpreter python [usr/share/scribus/scripts/*]
+unusual-interpreter /usr/bin/python [usr/share/scribus/scripts/Align_image_in_frame.py]
+unusual-interpreter /usr/bin/python [usr/share/scribus/scripts/ColorChart.py]
+
+
+# not relevant to user - or just fine as it is
+package-contains-documentation-outside-usr-share-doc [usr/share/scribus/profiles/ISOcoated_v2_300_bas.txt]
+package-contains-documentation-outside-usr-share-doc [usr/share/scribus/profiles/Readme]
+package-contains-documentation-outside-usr-share-doc [usr/share/scribus/profiles/sRGB_icc22.txt]
+package-contains-documentation-outside-usr-share-doc [usr/share/scribus/swatches/COPYING_RESENE.txt]
+package-contains-documentation-outside-usr-share-doc [usr/share/scribus/swatches/Japanese_Traditional_README.txt]
+package-contains-documentation-outside-usr-share-doc [usr/share/scribus/unicodenameslist.txt]

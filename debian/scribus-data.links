@@ -1,0 +1,2 @@
+#usr/share/hyphen usr/share/${env:p}/dicts
+usr/share/doc/${env:p}-data/copyright usr/share/doc/${env:p}/COPYING

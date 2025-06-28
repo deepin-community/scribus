@@ -1,0 +1,4 @@
+usr/share/${env:p}/doc/de usr/share/doc/${env:p}/de
+usr/share/${env:p}/doc/en usr/share/doc/${env:p}/en
+usr/share/${env:p}/doc/it usr/share/doc/${env:p}/it
+usr/share/${env:p}/doc/ru usr/share/doc/${env:p}/ru

@@ -1,0 +1,8 @@
+usr/share/${env:p}
+usr/share/doc/${env:p}/AUTHORS
+usr/share/doc/${env:p}/LINKS
+usr/share/doc/${env:p}/README
+usr/share/doc/${env:p}/TRANSLATION
+usr/share/icons
+usr/share/man
+usr/share/mime

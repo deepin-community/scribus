@@ -1,15 +1,137 @@
-Source: template-repository
-Section: unknown
+Source: scribus
+Section: graphics
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Mattia Rizzolo <mattia@debian.org>
+Build-Depends:
+ cmake (>= 3.14.0),
+ debhelper-compat (= 13),
+ dh-python,
+ dh-sequence-python3,
+ extra-cmake-modules,
+ gettext,
+ libcairo2-dev,
+ libcdr-dev,
+ libcups2-dev,
+ libfreehand-dev,
+ libgraphicsmagick++1-dev,
+ libharfbuzz-dev (>= 8),
+ libhunspell-dev,
+ libhyphen-dev,
+ libicu-dev,
+ liblcms2-dev,
+ libmspub-dev,
+ libopenscenegraph-dev (>= 3.4),
+ libpagemaker-dev,
+ libpng-dev,
+ libpodofo-dev,
+ libpoppler-cpp-dev,
+ libpoppler-dev (>= 0.75.0),
+ libpoppler-private-dev,
+ libqt5opengl5-dev,
+ libqxp-dev,
+ librevenge-dev,
+ libtiff-dev,
+ libvisio-dev,
+ libwpg-dev,
+ libxml2-dev,
+ libzmf-dev,
+ python3-dev,
+ qtbase5-dev (>= 5.14),
+ qttools5-dev,
+ qttools5-dev-tools,
+ zlib1g-dev,
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/debian/scribus
+Vcs-Git: https://salsa.debian.org/debian/scribus.git
+Homepage: https://www.scribus.net
 
-Package: template-repository
+Package: scribus
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends:
+ ghostscript,
+ ${S:Source}-data (= ${source:Version}),
+ ${misc:Depends},
+ ${python3:Depends},
+ ${shlibs:Depends},
+Recommends:
+ cups-bsd,
+ fonts-dejavu,
+ fonts-liberation,
+ hyphen-hyphenation-patterns,
+ icc-profiles-free,
+ xfonts-scalable | gsfonts-x11,
+Suggests:
+ icc-profiles,
+ scribus-template,
+ texlive-latex-recommended,
+ ${S:Source}-doc,
+Description: Open Source Desktop Page Layout
+ Scribus is an open source desktop page layout program with the aim of
+ producing commercial grade output in PDF and Postscript.
+ .
+ Scribus can be used for many tasks; from brochure design to newspapers,
+ magazines, newsletters and posters to technical documentation.
+ .
+ Scribus supports professional DTP features, such as CMYK color and a
+ color management system to soft proof images for high quality color printing,
+ flexible PDF creation options, Encapsulated PostScript import/export and
+ creation of 4 color separations, import of EPS/PS and SVG as native vector
+ graphics, Unicode text including right to left scripts such as Arabic and
+ Hebrew via freetype. Graphic formats which can be placed in Scribus as images
+ include PDF, Encapsulated Post Script (eps), TIFF, JPEG, PNG and XPixMap(xpm),
+ and any bitmap type supported by QT5.
+ .
+ If you need to use the render frame install the texlive-latex-recommended
+ package (suggested).
+
+Package: scribus-data
+Architecture: all
+Depends:
+ python3-tk,
+ ${misc:Depends},
+ ${python3:Depends},
+Recommends:
+ fonts-dejavu,
+Description: Open Source Desktop Page Layout - data files
+ Scribus is an open source desktop page layout program with the aim of
+ producing commercial grade output in PDF and Postscript.
+ .
+ Scribus can be used for many tasks; from brochure design to newspapers,
+ magazines, newsletters and posters to technical documentation.
+ .
+ Scribus supports professional DTP features, such as CMYK color and a
+ color management system to soft proof images for high quality color printing,
+ flexible PDF creation options, Encapsulated PostScript import/export and
+ creation of 4 color separations, import of EPS/PS and SVG as native vector
+ graphics, Unicode text including right to left scripts such as Arabic and
+ Hebrew via freetype. Graphic formats which can be placed in Scribus as images
+ include PDF, Encapsulated Post Script (eps), TIFF, JPEG, PNG and XPixMap(xpm),
+ and any bitmap type supported by QT5.
+ .
+ This package contains the architecture-independent files.
+
+#Package: scribus-ng-doc
+#Architecture: all
+#Section: doc
+#Depends:
+# ${misc:Depends},
+#Recommends:
+# ${S:Source} (= ${source:Version}),
+#Description: Open Source Desktop Page Layout - documentation - 1.5.x branch
+# Scribus is an open source desktop page layout program with the aim of
+# producing commercial grade output in PDF and Postscript.
+# .
+# Scribus can be used for many tasks; from brochure design to newspapers,
+# magazines, newsletters and posters to technical documentation.
+# .
+# Scribus supports professional DTP features, such as CMYK color and a
+# color management system to soft proof images for high quality color printing,
+# flexible PDF creation options, Encapsulated PostScript import/export and
+# creation of 4 color separations, import of EPS/PS and SVG as native vector
+# graphics, Unicode text including right to left scripts such as Arabic and
+# Hebrew via freetype. Graphic formats which can be placed in Scribus as images
+# include PDF, Encapsulated Post Script (eps), TIFF, JPEG, PNG and XPixMap(xpm),
+# and any bitmap type supported by QT5.
+# .
+# This package contains the documentation.
