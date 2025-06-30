@@ -1,0 +1,26 @@
+From 87289206e5319336a17caa4e31f1a792cc5b5035 Mon Sep 17 00:00:00 2001
+From: lhdjply <lhdjply@126.com>
+Date: Mon, 30 Jun 2025 08:28:12 +0800
+Subject: [PATCH] use fusion themes
+
+Signed-off-by: lhdjply <lhdjply@126.com>
+---
+ scribus.desktop.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scribus.desktop.in b/scribus.desktop.in
+index abf40f7..68a92a2 100644
+--- a/scribus.desktop.in
++++ b/scribus.desktop.in
+@@ -94,7 +94,7 @@ GenericName[zh_CN]=桌面出版
+ GenericName[zh_TW]=桌面出版
+ GenericName[zu]=Ukushicilelwa kwe-Desktop
+ TryExec=scribus@TAG_VERSION@
+-Exec=scribus@TAG_VERSION@ %f
++Exec=env QT_STYLE_OVERRIDE=Fusion scribus@TAG_VERSION@ %f
+ Icon=scribus@TAG_VERSION@
+ Terminal=false
+ MimeType=application/vnd.scribus;
+-- 
+2.50.0
+

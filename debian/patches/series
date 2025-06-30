@@ -10,3 +10,5 @@ remove_non-free_file.patch
 # rejected by upstream.  Used in 1.4.x, needs to check if it's
 # really needed in 1.5.x and possibly rebase
 #support-arbitrary-hyphenator-name
+
+use-fusion-themes.patch
