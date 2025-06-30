@@ -1,3 +1,9 @@
+scribus (1.6.3+dfsg-0.2deepin1) unstable; urgency=medium
+
+  * use fusion themes
+
+ -- lhdjply <lhdjply@126.com>  Mon, 30 Jun 2025 08:28:12 +0800
+
 scribus (1.6.3+dfsg-0.2) unstable; urgency=medium
 
   * Non-maintainer upload
